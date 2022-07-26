@@ -1,10 +1,4 @@
-<html>
-    <head>
-        <title>
-            HI!
-        </title>
-    </head>
-    <body>
-        <p>hello</p>
-    </body>
-</html>
+<?php
+
+require '../view/form.php';
+
