@@ -1,8 +1,5 @@
 <?php
 
-//require '../view/form.php';
-require '../view/homepage.php';
-
 // On importe les différents fichiers requis
 require_once 'core/Request.php';
 require_once 'core/Router.php';
