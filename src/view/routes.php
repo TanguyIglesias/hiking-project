@@ -13,7 +13,5 @@ $routes = [
     ],
     // Routes de la méthode POST
     'POST' => [
-    
-        
     ],
 ];

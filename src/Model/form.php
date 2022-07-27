@@ -2,10 +2,7 @@
 session_start();
 require './database.php';
 
-$db = new Database;
-$conn = $db->connectDb();
-
-if(isset($_POST['submit']))
+class From extends database
 {
 
     $firstname = $_POST['firstname'];
