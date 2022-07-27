@@ -31,7 +31,7 @@ if(isset($_POST['submit']))
     ];
 
     $query_execute = $query_run->execute($data);
-
 }
+
 
 
