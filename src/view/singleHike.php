@@ -36,12 +36,16 @@ $content = $hikeInfo ["content"];
         </ul>
     </section>
     <section>
-        <p><?= $content ?></p>
+        <div>
+            <p><?= $content ?></p>
+        </div>
     </section>
     <section>
-        <button type="submit" name="validate_favorite">Mettre dans mes favoris</button>
-        <button type="button" name="modifier_hike">Modifier des informations (uniquement créateur ou admin)</button>
-        <button type="button" name="supprimer_hike">Supprimer les informations (uniquement créateur ou admin)</button>
+        <div>
+            <button type="submit" name="validate_favorite">Mettre dans mes favoris</button>
+            <button type="button" name="edit_hike">Modifier des informations (uniquement créateur ou admin)</button>
+            <button type="button" name="delete_hike">Supprimer les informations (uniquement créateur ou admin)</button>
+        </div>
     </section>
     <?php require_once '../view/footer.php'; ?>
 </body>

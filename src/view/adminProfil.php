@@ -20,8 +20,12 @@ $country = $userInfo["country"];
 ?>
 
 <body>
-    <h1><?= $firstname . " " . $lastname ?></h1>
-    <button type="button" name="edit">Modifier</button>
+    <div>
+        <h1><?= $firstname . " " . $lastname ?></h1>
+        <input type="checkbox" id="checkbox" name="checkbox" checked>
+        <label for="checkbox">Administrateur</label>
+        <button type="button" name="edit">Modifier</button>
+    </div>
     <section>
         <div>
             <p><?= $nickname ?></p>
@@ -48,6 +52,15 @@ $country = $userInfo["country"];
         </div>
     <section>
         <button type="button" name="add_hike">ajouter un hike</button>
+    </section>
+    <section>
+        <h3>Gestion administration</h3>
+        <div>
+            <button type="button" name="admin_delete_user">supprimer un utilisateur</button>
+            <button type="button" name="admin_delete_hike">supprimer un hike</button>
+            <button type="button" name="admin_delete_tag">supprimer un tag</button>
+        </div>
+
     </section>
 </body>
 <?php require_once '../view/footer.php'; ?>
