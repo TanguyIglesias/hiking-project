@@ -1,6 +1,6 @@
 
 
-<footer>
+<footer style="text-align: center; width:100%; background-color: lightgrey; margin-top: 30px; padding-bottom: 10px">
     <div>
         <img src="" alt="">
         <h1>Hike Project</h1>

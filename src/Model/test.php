@@ -15,7 +15,7 @@ class HikeManager extends Database
     {
         $db=$this->connectDb();
 
-        $req = $db->query('SELECT firstname, lastname FROM users');
+        $req = $db->query('SELECT * FROM hikes');
 
         
 
@@ -25,3 +25,4 @@ class HikeManager extends Database
     }
     
 }
+

@@ -1,19 +1,12 @@
-<?php session_start()?>
+<?php 
+session_start();
+$title='Sign In';
+require_once '../view/head.php';
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-
-    <p>
-        
-
-    </p>
+    <?php require_once '../view/header.php'?>
+    <br>
     <form action="/sendForm" method="POST">
         <input type="text" name="firstname" placeholder="Firstname">
         <br>
@@ -31,5 +24,8 @@
         <br>
         <button type="submit" name="submit">Sign up</button>
     </form>
+
+    <?php require_once '../view/footer.php';?>
+
 </body>
 </html>
