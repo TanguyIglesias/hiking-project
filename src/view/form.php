@@ -14,7 +14,7 @@
         
 
     </p>
-    <form action="../Model/sendForm.php" method="POST">
+    <form action="/sendForm" method="POST">
         <input type="text" name="firstname" placeholder="Firstname">
         <br>
         <input type="text" name="lastname" placeholder="Lastname">
@@ -31,13 +31,5 @@
         <br>
         <button type="submit" name="submit">Sign up</button>
     </form>
-<!--         <?php
-        require '../Model/sendForm.php';
-        $form= new SendForm;
-        $data = $form-> sendForm();
-    ?> -->
-
-
-
 </body>
 </html>

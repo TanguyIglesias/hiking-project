@@ -1,6 +1,5 @@
 <?php
 
-/* require '../Model/database.php'; */
 
 class DeleteUser extends Database
 {
@@ -19,7 +18,12 @@ class DeleteUser extends Database
 
         $query = "DELETE FROM users WHERE user_id=:deleteUserId";
         $query_run = $db->prepare($query);
-
-        $query_run->execute($data);
+        $query_run->bindParam(':deleteUserId', $data['deleteUserId']);
+        if($query_run->execute($data))
+        {
+            header("Location:/");   
+        }
     }
 }
+$delete= new DeleteUser();
+$delete->deleteUser();

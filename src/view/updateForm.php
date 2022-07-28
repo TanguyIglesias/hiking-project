@@ -18,7 +18,7 @@ $country = $userInfo["country"];
 
 ?>
 
-<form action="../Model/updateUser.php" method="POST">
+<form action="/updateUser" method="POST">
         <input type="text" name="firstname" placeholder="Firstname" value=<?= $firstname?>>
         <br>
         <input type="text" name="lastname" placeholder="Lastname" value=<?= $lastname ?>>
