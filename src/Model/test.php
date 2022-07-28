@@ -1,6 +1,6 @@
 <?php
 
-require '../Model/database.php';
+/* require '../Model/database.php'; */
 
 class HikeManager extends Database
 {
@@ -23,6 +23,5 @@ class HikeManager extends Database
 
         
     }
-
-
+    
 }

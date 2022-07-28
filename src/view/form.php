@@ -9,11 +9,12 @@
     <title>Document</title>
 </head>
 <body>
+
     <p>
         
 
     </p>
-    <form action="../Model/form.php" method="POST">
+    <form action="../Model/sendForm.php" method="POST">
         <input type="text" name="firstname" placeholder="Firstname">
         <br>
         <input type="text" name="lastname" placeholder="Lastname">
@@ -30,6 +31,13 @@
         <br>
         <button type="submit" name="submit">Sign up</button>
     </form>
+<!--         <?php
+        require '../Model/sendForm.php';
+        $form= new SendForm;
+        $data = $form-> sendForm();
+    ?> -->
+
+
 
 </body>
 </html>
