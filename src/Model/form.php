@@ -2,7 +2,7 @@
 session_start();
 require './database.php';
 
-class From extends database
+class Form extends database
 {
 
     $firstname = $_POST['firstname'];

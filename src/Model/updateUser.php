@@ -31,7 +31,7 @@ class UpdateForm extends Database
         ];
 
         //$query = "UPDATE users SET firstname= :firstname, lastname= :lastname, nickname= :nickname, mail= :mail, password= :password, city= :city, country= :country WHERE user_id=5";
-        $query = "UPDATE users SET nickname= :nickname WHERE user_id = 5";
+        $query = "UPDATE users SET nickname=$nickname WHERE user_id = 5";
         $query_run = $db->prepare($query);
 
         $query_run->execute($data);

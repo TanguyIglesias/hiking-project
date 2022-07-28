@@ -8,10 +8,14 @@
 $routes = [
     // Routes de la méthode GET (typiquement afficher une page)
     'GET' => [
+        '/' => 'view/homepage.php',
         '/homepage' => 'view/homepage.php',
         '/registration' => 'view/form.php',
+        '/update' => 'view/updateForm.php',
+        '/hike' => 'view/singleHike.php',
     ],
     // Routes de la méthode POST
     'POST' => [
+        '/sendForm' => 'model/sendForm.php',
     ],
 ];

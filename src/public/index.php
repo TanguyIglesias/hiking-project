@@ -1,5 +1,9 @@
 <?php
 
+// On appelle la base de donnée
+
+require 'model/database.php';
+
 // On importe les différents fichiers requis
 require_once 'core/Request.php';
 require_once 'core/Router.php';
