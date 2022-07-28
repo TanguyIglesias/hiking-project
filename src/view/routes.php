@@ -13,6 +13,7 @@ $routes = [
         '/registration' => 'view/form.php',
         '/delete' => 'view/delete.php',
         '/update' => 'view/updateForm.php',
+        '/hike' => 'view/singleHike.php',
     ],
     // Routes de la méthode POST
     'POST' => [
