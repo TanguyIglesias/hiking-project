@@ -22,5 +22,6 @@ $routes = [
         '/sendForm' => 'Model/sendForm.php',
         '/deleteUser' => 'Model/deleteUser.php',
         '/updateUser' => 'Model/updateUser.php',
+        '/register' => 'Model/register.php'
     ],
 ];
