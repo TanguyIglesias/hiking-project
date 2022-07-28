@@ -1,7 +1,5 @@
 <?php 
 require '../Model/userInfo.php';
-require_once '../view/head.php'; 
-require_once '../view/header.php';
 
 $user= new UserInfo;
 $userInfo = $user->userInfo();
@@ -16,8 +14,10 @@ $mail = $userInfo["mail"];
 $password = $userInfo["password"];
 $city = $userInfo["city"];
 $country = $userInfo["country"];
-
+$title='Admin Profile';
+require_once '../view/head.php'; 
 ?>
+<?php require_once '../view/header.php'; ?>
 
 <body>
     <div>
