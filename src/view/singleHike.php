@@ -1,13 +1,10 @@
 <?php 
 
 require_once '../Model/hikeInfo.php';
-require_once '../view/head.php'; 
 
 $hike = new HikeInfo;
 $hikeInfo = $hike->hikeInfo();
-// echo '<pre>';
-// var_dump($hikeInfo);
-// echo '</pre>';
+
 
 $hike_name = $hikeInfo["hike_name"];
 $distance = $hikeInfo["distance"];
@@ -17,6 +14,8 @@ $creationDate = $hikeInfo["creation_date"];
 $updateDate = $hikeInfo["update_date"];
 $image = $hikeInfo ["image_path"];
 $content = $hikeInfo ["content"];
+$title=$hike_name;
+require_once '../view/head.php'; 
 
 ?>
 

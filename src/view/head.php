@@ -11,5 +11,5 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Document</title>
+    <title><?= $title?></title>
 </head>
