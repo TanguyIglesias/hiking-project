@@ -41,7 +41,7 @@ class SendForm extends Database
             $query_run->bindParam(':password',$data['password']);
             $query_run->bindParam(':city',$data['city']);
             $query_run->bindParam(':country',$data['country']);
-            if ($query_run->execute($data))
+            if ($query_run->execute())
             {
                 header("Location:/");
             }else{
