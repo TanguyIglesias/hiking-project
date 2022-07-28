@@ -1,4 +1,7 @@
 
+<?php
+require '../Model/register.php';
+?>
 
 <header>
     <div>
@@ -8,7 +11,10 @@
     <div>
         <input type="text" placeholder="Search Hike">
         <div>
-            <button>Log In</button>
+            <form action="/register" method="post">
+                <input type="submit" value="Login">
+            </form>
+
             <button>Sign In</button>
         </div>
     </div>

@@ -21,5 +21,14 @@ $country = $userInfo["country"];
 
 <body>
     <h1></h1>
+    <ul>
+        <li><?=$firstname?></li>
+        <li><?=$lastname?></li>
+        <li><?=$nickname?></li>
+        <li><?=$mail?></li>
+        <li><?=$city?></li>
+        <li><?=$country?></li>
+
+    </ul>
 </body>
 <?php require_once '../view/footer.php'; ?>
