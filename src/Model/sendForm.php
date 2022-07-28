@@ -44,7 +44,9 @@ class SendForm extends Database
             if ($query_run->execute($data))
             {
                 header("Location:/");
-            };
+            }else{
+                echo'ERROR';
+            }
         
         } 
     }
