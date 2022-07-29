@@ -1,4 +1,5 @@
 <?php
+if (!isset($_SESSION)) { session_start(); }
 require '../Model/test.php';
 $hikes = new HikeManager();
 $hikesInfo = $hikes->getHikes();
@@ -9,7 +10,7 @@ $title='Homepage';
 require_once '../view/head.php';
 ?>
 <body>
-    <?php require_once '../view/header.php' ?>
+    <?php require_once '../view/header.php'?>
 
     <?php foreach ( $hikesInfo as $key => $value): ?>
     <div>

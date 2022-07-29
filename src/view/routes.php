@@ -15,13 +15,16 @@ $routes = [
         '/update' => 'view/updateForm.php',
         '/hike' => 'view/singleHike.php',
         '/user' => 'view/userProfil.php',
-        '/admin' => 'view/adminProfil.php'
+        '/admin' => 'view/adminProfil.php',
+        
+        
     ],
     // Routes de la méthode POST
     'POST' => [
         '/sendForm' => 'Model/sendForm.php',
         '/deleteUser' => 'Model/deleteUser.php',
         '/updateUser' => 'Model/updateUser.php',
-        '/register' => 'Model/register.php'
+        '/register' => 'Model/register.php',
+        '/logout' => 'Model/logOut.php'
     ],
 ];
