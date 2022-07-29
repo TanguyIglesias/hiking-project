@@ -15,6 +15,7 @@ $updateDate = $hikeInfo["update_date"];
 $image = $hikeInfo ["image_path"];
 $content = $hikeInfo ["content"];
 $title=$hike_name;
+
 require_once '../view/head.php'; 
 
 ?>
