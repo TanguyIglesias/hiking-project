@@ -2,6 +2,9 @@
 require '../Model/test.php';
 $hikes = new HikeManager();
 $hikesInfo = $hikes->getHikes();
+// echo '<pre>';
+// var_dump($hikesInfo);
+// echo '</pre>';
 $title='Homepage';
 require_once '../view/head.php';
 ?>

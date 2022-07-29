@@ -6,7 +6,7 @@ class UserInfo extends Database
     {
         $db=$this->connectDb();
 
-        $userID = 5;
+        $userID = 55;
 
         $req = $db->query("SELECT * FROM users WHERE user_id=$userID");
 

@@ -9,7 +9,7 @@ require_once '../view/head.php';
 
                 <input type="text" name="deleteUserId" placeholder="User ID to Delete">
                 <br>
-                <button type="submit" name="submit">Sign up</button>
+                <button type="submit" name="submit">Delete</button>
         </form>
 <?php require_once '../view/footer.php';?>
 
