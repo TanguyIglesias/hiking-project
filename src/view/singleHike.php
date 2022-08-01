@@ -42,11 +42,11 @@ require_once '../view/head.php';
     <section>
         <img src="<?=$image?>" alt="<?= $hike_name ?>" style="width:50%;">
         <ul>            
-            <li><?= $distance ?> km </li>
-            <li><?= $elevationGain ?> m</li>
-            <li><?= $duration ?></li>
-            <li><?= $creationDate ?></li>
-            <li><?= $updateDate ?></li>
+            <li>Distance: <?= $distance ?> km </li>
+            <li>Gain d'élévation: <?= $elevationGain ?> m</li>
+            <li>Durée: <?= $duration ?></li>
+            <li>Date de création: <?= $creationDate ?></li>
+            <li>Date de mise à jour: <?= $updateDate ?></li>
             <li>Created by: <?=$creatorFirstname?> <?=$creatorLastname?></li>
         </ul>
     </section>
