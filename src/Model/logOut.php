@@ -10,6 +10,7 @@
         unset($_SESSION["password"]);
         unset($_SESSION["city"]);
         unset($_SESSION["country"]);
+        unset($_SESSION["user_admin"]);
         //$_SESSION = array();
         header("Location:/");
 
