@@ -17,6 +17,15 @@ require_once '../view/head.php';
       <p>Date mise à jour: <?= $value['update_date'] ?></p>
       <p>Temps: <?= $value['duration'] ?></p>
       <p>Distance: <?= $value['distance'] ?>km</p>
+      
+      <a href="/hike?hikeID=<?php echo $value['hike_id'] ?>">
+        <h3><?= $value['hike_name'] ?></h3>
+        <img src="" alt="Photo: <?= $value['hike_name'] ?>">
+        <p>Date mise à jour: <?= $value['update_date'] ?></p>
+        <p>Temps: <?= $value['duration'] ?></p>
+        <p>Distance: <?= $value['distance'] ?>km</p>
+      </a>
+    
     </div>
   <?php endforeach ?>
   <?php require_once '../view/footer.php'; ?>

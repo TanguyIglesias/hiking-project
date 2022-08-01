@@ -1,12 +1,15 @@
 <?php 
 
 require_once '../Model/hikeInfo.php';
-
+$hike_id = $_GET['hikeID'];
 $hike = new HikeInfo;
-$hikeInfo = $hike->hikeInfo();
+$hikeInfo = $hike->hikeInfo($hike_id);
+
+
 
 
 $hike_name = $hikeInfo["hike_name"];
+$userID = $hikeInfo["user_id"];
 $distance = $hikeInfo["distance"];
 $elevationGain = $hikeInfo["elevation_gain"];
 $duration = $hikeInfo["duration"];
@@ -15,6 +18,16 @@ $updateDate = $hikeInfo["update_date"];
 $image = $hikeInfo ["image_path"];
 $content = $hikeInfo ["content"];
 $title=$hike_name;
+
+require_once '../Model/userInfo.php';
+$user= new UserInfo;
+$userInfoByID = $user->userInfoByID($userID);
+
+$creatorFirstname = $userInfoByID['firstname'];
+$creatorLastname = $userInfoByID['lastname'];
+
+
+
 
 require_once '../view/head.php'; 
 
@@ -33,6 +46,7 @@ require_once '../view/head.php';
             <li><?= $duration ?></li>
             <li><?= $creationDate ?></li>
             <li><?= $updateDate ?></li>
+            <li>Created by:<?=$creatorFirstname?> <?=$creatorLastname?></li>
         </ul>
     </section>
     <section>
