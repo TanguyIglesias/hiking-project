@@ -17,7 +17,7 @@ if (!isset($_SESSION)) { session_start(); }
                 var_dump($_SESSION);
 
                 if(isset($_SESSION['firstname'])) {
-                    echo "Your Nickname is" . ($_SESSION['firstname']);
+                    echo "Your Nickname is " . ($_SESSION['nickname']);
                     echo '<form action="/logout" method="post">
                     <input type="submit" value="LogOut" name="logout">
                     </form>';
