@@ -12,14 +12,15 @@ class SendForm extends Database
 
         if (isset($_POST['submit']))
         {   
-            $firstname = $lastname = $nickname = $mail = $password = "";
+            $firstname = $lastname = $nickname = $mail = $password = $city = $country = "";
 
             function test_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
+                $data = ucfirst($data);
                 return $data;
-              }
+            }
 
             
                 if(empty($_POST["firstname"]))
@@ -95,12 +96,39 @@ class SendForm extends Database
                     $password = test_input($_POST["password"]);
                     $password = password_hash($password, PASSWORD_DEFAULT);
                 }
+                if (empty($_POST['city']))
+                {
+                    header("Location:/registration");
+                    $_SESSION['error'] = 'Formulaire Incomplet';
+                    exit();
+                }else 
+                {
+                    $city = test_input($_POST['city']);
+                    if(!preg_match("/^[a-zA-Z-' ]*$/", $city))
+                    {
+                        header("Location:/registration");
+                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        exit();
+                    }
+                }
+                if (empty($_POST['country']))
+                {
+                    header("Location:/registration");
+                    $_SESSION['error'] = 'Formulaire Incomplet';
+                    exit();
+                }else 
+                {
+                    $city = test_input($_POST['country']);
+                    if(!preg_match("/^[a-zA-Z-' ]*$/", $country))
+                    {
+                        header("Location:/registration");
+                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        exit();
+                    }
+                }
             
-
-
-        
-            $city = $_POST['city'];
-            $country = $_POST['country'];
+            //$city = $_POST['city'];
+            //$country = $_POST['country'];
             $user_admin= 0;
         
         
