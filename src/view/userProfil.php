@@ -25,10 +25,10 @@ require_once '../view/head.php';
     <h1><?= $firstname . " " . $lastname ?></h1>
     <section>
         <div>
-            <p><?= $nickname ?></p>
-            <p><?= $mail?></p>
-            <p><?= $city ?></p>
-            <p><?= $country ?></p>
+            <p>Nickname: <?= $nickname ?></p>
+            <p>E-mail: <?= $mail?></p>
+            <p>City: <?= $city ?></p>
+            <p>Country: <?= $country ?></p>
         </div>
     </section>
     <section>

@@ -15,8 +15,8 @@ $elevationGain = $hikeInfo["elevation_gain"];
 $duration = $hikeInfo["duration"];
 $creationDate = $hikeInfo["creation_date"];
 $updateDate = $hikeInfo["update_date"];
-$image = $hikeInfo ["image_path"];
-$content = $hikeInfo ["content"];
+$image = $hikeInfo["image_path"];
+$content = $hikeInfo["content"];
 $title=$hike_name;
 
 require_once '../Model/userInfo.php';
@@ -37,12 +37,13 @@ require_once '../view/head.php';
     </figure>
     <h1><?= $hike_name ?></h1>
     <section>
+        <img src="<?=$image?>" alt="<?= $hike_name ?>" style="width:50%;">
         <ul>            
-            <li><?= $distance ?> km </li>
-            <li><?= $elevationGain ?> m</li>
-            <li><?= $duration ?></li>
-            <li><?= $creationDate ?></li>
-            <li><?= $updateDate ?></li>
+            <li>Distance: <?= $distance ?> km </li>
+            <li>Gain d'élévation: <?= $elevationGain ?> m</li>
+            <li>Durée: <?= $duration ?></li>
+            <li>Date de création: <?= $creationDate ?></li>
+            <li>Date de mise à jour: <?= $updateDate ?></li>
             <li>Created by: <?=$creatorFirstname?> <?=$creatorLastname?></li>
         </ul>
     </section>

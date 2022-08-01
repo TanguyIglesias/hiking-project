@@ -18,6 +18,7 @@ $routes = [
         '/admin' => 'view/adminProfil.php',
         '/createhike' => 'view/createHike.php',
         '/pinterest' => 'view/pinterest.php',
+        '/deleteHike' => 'view/deleteHike.php',
     ],
     // Routes de la méthode POST
     'POST' => [
@@ -27,5 +28,6 @@ $routes = [
         '/register' => 'Model/register.php',
         '/logout' => 'Model/logOut.php',
         '/sendHike' => 'Model/sendHike.php',
+        '/deleteHike' => 'Model/deleteHike.php',
     ],
 ];
