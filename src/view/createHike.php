@@ -32,18 +32,8 @@ require_once '../view/head.php';
         <button type="submit" name="submit">Envoyer</button>
     </form>
 
-    <?php 
-    require_once '../view/footer.php';
-    unset($_SESSION["urlErr"]); 
-    ?>
-        <!-- <input type="file" name="image_path" placeholder="file">
-        <br> -->
-        <button type="submit" name="submit">Envoyer</button>
-    </form>
-
-    <?= date("d/m/Y"); ?>
-
-    <?php 
+    <?php
+    unset($_SESSION["urlErr"]);  
     unset($_SESSION["error"]); 
     unset($_SESSION['nameErr']);
     unset($_SESSION['distanceErr']);

@@ -63,4 +63,5 @@ $send = new SetSession();
 $send->setUserInfo();
 ?>
 
-<a href="/"><button>Homepage</button></a>
+<!-- <a href="/"><button>Homepage</button></a> -->
+<?php header("Location:/");?>
