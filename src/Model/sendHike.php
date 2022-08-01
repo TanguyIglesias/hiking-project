@@ -12,23 +12,24 @@ class SendHike extends Database
         if (isset($_POST['submit']))
         {
             $hike_name = $distance = $elevation_gain = $duration = $creation_date = $update_date = $content = "";
-            
+        
             function test_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
+                $data = ucfirst($data);
                 return $data;
-              }
+            }
 
               
 
             $image_path = test_input($_POST["image_path"]);
-                  if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
-                  {
-                      header("Location:/createhike");
-                      $_SESSION['urlErr'] = "Invalid url format";
-                      exit();
-                  }
+                if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
+                {
+                    header("Location:/createhike");
+                    $_SESSION['urlErr'] = "Invalid url format";
+                    exit();
+                }
 
 
             $content = $_POST['content'];
@@ -53,7 +54,7 @@ class SendHike extends Database
             }
 
             if(empty($_POST["distance"]))
-            {
+        {
                 header("Location:/createhike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
@@ -82,8 +83,8 @@ class SendHike extends Database
                     $_SESSION['elevationErr'] = "Seul les chiffres et les : sont autorisés.";
                     exit();
                 }
-            }
-
+        }
+        
             // if(empty($_POST["duration"]))
             // {
             //     header("Location:/createhike");
@@ -127,7 +128,7 @@ class SendHike extends Database
             $update = "$update_explode[2]-$update_explode[1]-$update_explode[0]";
 
             $duration = $_POST['duration'];
-            $userId = 3;        
+            $userId = $_SESSION['user_id'];        
         
             $query = "INSERT INTO hikes (user_id, hike_name, content, creation_date, update_date, distance, elevation_gain, duration, image_path) VALUES (:user_id, :hike_name, :content, :creation_date, :update_date, :distance, :elevation_gain, :duration, :image_path)";
             $query_run = $db->prepare($query);
@@ -161,7 +162,8 @@ class SendHike extends Database
             }
         } 
     }
-}
+
+
 
 $send = new SendHike();
 $send->sendHike();
