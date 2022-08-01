@@ -23,13 +23,7 @@ class SendHike extends Database
 
               
 
-            $image_path = test_input($_POST["image_path"]);
-                if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
-                {
-                    header("Location:/createhike");
-                    $_SESSION['urlErr'] = "Invalid url format";
-                    exit();
-                }
+            
 
 
             $content = $_POST['content'];
@@ -38,7 +32,7 @@ class SendHike extends Database
 
             if(empty($_POST["hike_name"]))
             {
-                header("Location:/createHike");
+                header("Location:/createhike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
             }else
@@ -63,7 +57,7 @@ class SendHike extends Database
                 if(!preg_match("/^[0-9]*$/", $distance))
                 {
                     header("Location:/createhike");
-                    $_SESSION['distanceErr'] = "Seul les chiffres et les : sont autorisés.";
+                    $_SESSION['distanceErr'] = "Seul les chiffres sont autorisés.";
                     exit();
                 }
             }
@@ -79,7 +73,7 @@ class SendHike extends Database
                 if(!preg_match("/^[0-9]*$/", $elevation_gain))
                 {
                     header("Location:/createhike");
-                    $_SESSION['elevationErr'] = "Seul les chiffres et les : sont autorisés.";
+                    $_SESSION['elevationErr'] = "Seul les chiffres sont autorisés.";
                     exit();
                 }
         }
@@ -115,6 +109,14 @@ class SendHike extends Database
                     exit();
                 }
             }
+
+            $image_path = test_input($_POST["image_path"]);
+                if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
+                {
+                    header("Location:/createhike");
+                    $_SESSION['urlErr'] = "Invalid url format";
+                    exit();
+                }
 
             $_POST["creation_date"] = date("d/m/Y");
             $creation_date = $_POST["creation_date"];

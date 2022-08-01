@@ -46,7 +46,7 @@ require_once '../view/head.php';
             <li><?= $duration ?></li>
             <li><?= $creationDate ?></li>
             <li><?= $updateDate ?></li>
-            <li>Created by:<?=$creatorFirstname?> <?=$creatorLastname?></li>
+            <li>Created by: <?=$creatorFirstname?> <?=$creatorLastname?></li>
         </ul>
     </section>
     <section>

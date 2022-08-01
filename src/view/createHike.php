@@ -30,6 +30,8 @@ require_once '../view/head.php';
         <input type="text" name="image_path" placeholder="url image"><span style="color:red"><?= (isset($_SESSION['urlErr'])) ? $_SESSION['urlErr'] : "" ?></span>
         <br>
         <button type="submit" name="submit">Envoyer</button>
+        <p class="label is-small has-text-danger" style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></p>
+
     </form>
 
     <?php
