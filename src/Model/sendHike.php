@@ -33,9 +33,8 @@ class SendHike extends Database
 
 
             $content = $_POST['content'];
-                // $data = ucfirst($data);
-                return $data;
-            }
+                $content = test_input($content);
+            
 
             if(empty($_POST["hike_name"]))
             {
@@ -162,6 +161,7 @@ class SendHike extends Database
             }
         } 
     }
+}
 
 
 
