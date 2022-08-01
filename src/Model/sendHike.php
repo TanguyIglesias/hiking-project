@@ -19,13 +19,6 @@ class SendHike extends Database
                 $data = htmlspecialchars($data);
                 return $data;
               }
-        
-            $hike_name = $_POST['hike_name'];
-            $distance = $_POST['distance'];
-            $elevation_gain = $_POST['elevation_gain'];
-            $duration = $_POST['duration'];
-            $creation_date = $_POST['creation_date'];
-            $update_date = $_POST['update_date'];
 
 
             $image_path = test_input($_POST["image_path"]);
@@ -132,14 +125,7 @@ class SendHike extends Database
             $update_explode = explode("/", $update_date);
             $update = "$update_explode[2]-$update_explode[1]-$update_explode[0]";
 
-            // $hike_name = $_POST['hike_name'];
-            // $distance = $_POST['distance'];
-            // $elevation_gain = $_POST['elevation_gain'];
             $duration = $_POST['duration'];
-            //$creation_date = $_POST['creation_date'];
-            //$update_date = $_POST['update_date'];
-            $image_path = "rekphqpsjw";
-            //$content = $_POST['content'];
             $userId = 3;        
         
             $query = "INSERT INTO hikes (user_id, hike_name, content, creation_date, update_date, distance, elevation_gain, duration, image_path) VALUES (:user_id, :hike_name, :content, :creation_date, :update_date, :distance, :elevation_gain, :duration, :image_path)";
