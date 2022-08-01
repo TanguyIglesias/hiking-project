@@ -31,7 +31,6 @@ require_once '../view/head.php';
         <br>
         <button type="submit" name="submit">Envoyer</button>
     </form>
-    <?= date("d/m/Y"); ?>
 
     <?php
     unset($_SESSION["urlErr"]);  
