@@ -17,8 +17,9 @@ class SendHike extends Database
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
+                $dtat = ucfirst($data);
                 return $data;
-              }
+            }
         
             $hike_name = $_POST['hike_name'];
             $distance = $_POST['distance'];
@@ -29,17 +30,12 @@ class SendHike extends Database
 
 
             $image_path = test_input($_POST["image_path"]);
-                  if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
-                  {
-                      header("Location:/createhike");
-                      $_SESSION['urlErr'] = "Invalid url format";
-                      exit();
-                  }
-
-
-            $content = $_POST['content'];
-                // $data = ucfirst($data);
-                return $data;
+                if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
+                {
+                    header("Location:/createhike");
+                    $_SESSION['urlErr'] = "Invalid url format";
+                    exit();
+                }
             }
 
             if(empty($_POST["hike_name"]))
@@ -174,7 +170,7 @@ class SendHike extends Database
             }
         } 
     }
-}
+
 
 $send = new SendHike();
 $send->sendHike();
