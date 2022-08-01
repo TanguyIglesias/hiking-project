@@ -16,7 +16,8 @@ $routes = [
         '/hike' => 'view/singleHike.php',
         '/user' => 'view/userProfil.php',
         '/admin' => 'view/adminProfil.php',
-        '/createhike' => 'view/createHike.php'
+        '/createhike' => 'view/createHike.php',
+        '/pinterest' => 'view/pinterest.php',
     ],
     // Routes de la méthode POST
     'POST' => [

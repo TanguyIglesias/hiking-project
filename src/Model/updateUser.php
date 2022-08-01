@@ -83,19 +83,20 @@ class UpdateForm extends Database
                       exit();
                   }
               }
-              if(empty($_POST["password"]))
-              {
-                  header("Location:/update");
-                  $_SESSION['error'] = 'Formulaire Incomplet';
-                  exit();
-              }else 
-              {
-                  $password = test_input($_POST["password"]);
-                  $password = password_hash($password, PASSWORD_DEFAULT);
-              }
+              if(empty($_POST['password'])){
+
+                $password = test_input($_SESSION['password']);
+
+            }else{
+
+                $password = test_input($_POST["password"]);
+                $password = password_hash($password, PASSWORD_DEFAULT);
+            }
+              
 
                 $city = $_POST['city'];
                 $country = $_POST['country'];
+                $user_id = $_SESSION['user_id'];
         
             
             $data = [
@@ -107,7 +108,7 @@ class UpdateForm extends Database
                 'city' => $city,
                 'country' => $country,
             ];
-            $query = "UPDATE users SET firstname=:firstname, lastname=:lastname, nickname=:nickname, mail=:mail, password=:password, city=:city, country=:country WHERE user_id = 55";
+            $query = "UPDATE users SET firstname=:firstname, lastname=:lastname, nickname=:nickname, mail=:mail, password=:password, city=:city, country=:country WHERE user_id =$user_id";
 
             $query_run = $db->prepare($query);
             $query_run->bindParam(':firstname', $data['firstname']);
@@ -119,7 +120,7 @@ class UpdateForm extends Database
             $query_run->bindParam(':country', $data['country']);
             if($query_run->execute())
             {
-                header("Location:/update");
+                header("Location:/user");
             }else
             {
                 echo'ERROR';

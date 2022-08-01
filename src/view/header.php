@@ -12,28 +12,27 @@ if (!isset($_SESSION)) { session_start(); }
         <input type="text" placeholder="Search Hike">
         <div>
             <?php
-                //session_destroy();
 
-                var_dump($_SESSION);
+                // var_dump($_SESSION);
 
-                if(isset($_SESSION['firstname'])) {
-                    echo "Your Nickname is " . ($_SESSION['nickname']);
-                    echo '<form action="/logout" method="post">
-                    <input type="submit" value="LogOut" name="logout">
-                    </form>';
-                    
-                }
-                else {
-                    echo "Session not started, please Login";
-                    echo '<form action="/register" method="post">
-                        <input type="text" name="nickname" placeholder="Nickname">
-                        <br>
-                        <input type="password" name="password" placeholder="Password">
-                        <br>
-                        <input type="submit" value="Login" name="login">
+                if(isset($_SESSION['firstname'])) :?>
+                    <p>Connected as <a href="/user"><?=($_SESSION['nickname']);?></a></p> 
+                    <form action="/logout" method="post">
+                    <input type="submit" value="Logout" name="logout">
                     </form>
-                    <a href="/registration"><button>Sign In</button></a>';
-                }
+                <?php endif; ?>   
+                <?php if(!isset($_SESSION['firstname'])) :?>
+                    <p>Session not started, please Login</p>
+                    <form action="/register" method="post">
+                    <input type="text" name="nickname" placeholder="Nickname">
+                    <br>
+                    <input type="password" name="password" placeholder="Password">
+                    <br>
+                    <input type="submit" value="Login" name="login">
+                    </form>
+                    <a href="/registration"><button>Sign In</button></a>
+                    <?php endif; ?>   
+         <?php       
 /* 
                 if(isset($_POST['logout']))
                 { 

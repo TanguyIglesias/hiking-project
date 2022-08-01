@@ -26,7 +26,7 @@ require_once '../view/head.php';
                 <br>
                 <input type="text" name="mail" placeholder="Mail" value=<?= $mail ?>><span style="color: red">*</span><span style="color:red"><?= (isset($_SESSION['mailErr'])) ? $_SESSION['mailErr'] : "" ?></span>
                 <br>
-                <input type="password" name="password" placeholder="Password"><span style="color: red">*</span>
+                <input type="password" name="password" placeholder="Password" ><span style="color: red">*</span>
                 <br>
                 <input type="text" name="city" placeholder="City" value=<?= $city ?>>
                 <br>

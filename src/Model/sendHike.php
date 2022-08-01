@@ -4,13 +4,21 @@ class SendHike extends Database
 {
 
     public function sendHike() {
-
+        if (!isset($_SESSION)) { session_start(); }
 
 
         $db=$this->connectDb();
 
         if (isset($_POST['submit']))
-        {
+        {   
+
+            $hike_name = $distance = $elevation_gain = $duration = $creation_date = $update_date = $image_path = "";
+            function test_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+              }
         
             $hike_name = $_POST['hike_name'];
             $distance = $_POST['distance'];
@@ -18,7 +26,17 @@ class SendHike extends Database
             $duration = $_POST['duration'];
             $creation_date = $_POST['creation_date'];
             $update_date = $_POST['update_date'];
-            $image_path = $_POST['image_path'];
+
+
+            $image_path = test_input($_POST["image_path"]);
+                  if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
+                  {
+                      header("Location:/createhike");
+                      $_SESSION['urlErr'] = "Invalid url format";
+                      exit();
+                  }
+
+
             $content = $_POST['content'];
             $userId = 3;        
         

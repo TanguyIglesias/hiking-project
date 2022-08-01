@@ -1,11 +1,11 @@
 <?php 
 require '../Model/userCheck.php';
-if (!isset($_SESSION)) { session_start(); }
 
 class SetSession extends Database {
-
+    
     function setUserInfo(){
-
+    if (!isset($_SESSION)) { session_start(); }
+    
         $db=$this->connectDb();
 
         $user= new UserCheck;
@@ -27,7 +27,7 @@ class SetSession extends Database {
         $_SESSION["country"] = $userInfo["country"];
         $_SESSION["user_admin"] = $userInfo["user_admin"];
 
-        var_dump($_SESSION);
+        // var_dump($_SESSION);
 
 
 /*         if (isset($_POST['login'])) {

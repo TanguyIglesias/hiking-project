@@ -13,15 +13,12 @@ require_once '../view/head.php';
   <?php foreach ($hikesInfo as $key => $value) : ?>
     <div>
       <h3><?= $value['hike_name'] ?></h3>
-      <img src="" alt="Photo: <?= $value['hike_name'] ?>">
+      <img src="<?= $value["image_path"]?>" alt="Photo: <?= $value['hike_name'] ?>" style="width:30%";>
       <p>Date mise à jour: <?= $value['update_date'] ?></p>
       <p>Temps: <?= $value['duration'] ?></p>
       <p>Distance: <?= $value['distance'] ?>km</p>
     </div>
   <?php endforeach ?>
-
-  <img src="../image/Neuralink.jpg" alt="voyage">
-
   <?php require_once '../view/footer.php'; ?>
 
 </body>

@@ -21,20 +21,14 @@ require_once '../view/head.php';
 <?php require_once '../view/header.php';?>
 
 <body>
+    <a href="/update"><button  name="edit">Modifier</button></a>
     <h1><?= $firstname . " " . $lastname ?></h1>
-    <button type="button" name="edit">Modifier</button>
     <section>
         <div>
             <p><?= $nickname ?></p>
-            <button type="button" name="edit">Modifier</button>
             <p><?= $mail?></p>
-            <button type="button" name="edit">Modifier</button>
-            <p><?= $password  ?></p>
-            <button type="button" name="edit">Modifier</button>
             <p><?= $city ?></p>
-            <button type="button" name="edit">Modifier</button>
             <p><?= $country ?></p>
-            <button type="button" name="edit">Modifier</button>
         </div>
     </section>
     <section>
@@ -48,7 +42,7 @@ require_once '../view/head.php';
 
         </div>
     <section>
-        <button type="button" name="add_hike">ajouter un hike</button>
+        <a href="/createhike"><button type="button" name="add_hike">ajouter un hike</button></a>
     </section>
 </body>
 <?php require_once '../view/footer.php'; ?>

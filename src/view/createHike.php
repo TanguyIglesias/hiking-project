@@ -22,12 +22,15 @@ require_once '../view/head.php';
         <br>
         <input type="text" name="content" placeholder="Description">
         <br>
-        <input type="file" name="image_path" placeholder="file">
+        <input type="text" name="image_path" placeholder="url image"><span style="color:red"><?= (isset($_SESSION['urlErr'])) ? $_SESSION['urlErr'] : "" ?></span>
         <br>
         <button type="submit" name="submit">Envoyer</button>
     </form>
 
-    <?php require_once '../view/footer.php';?>
+    <?php 
+    require_once '../view/footer.php';
+    unset($_SESSION["urlErr"]); 
+    ?>
 
 </body>
 </html>
