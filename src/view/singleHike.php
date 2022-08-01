@@ -26,9 +26,6 @@ $userInfoByID = $user->userInfoByID($userID);
 $creatorFirstname = $userInfoByID['firstname'];
 $creatorLastname = $userInfoByID['lastname'];
 
-
-
-
 require_once '../view/head.php'; 
 
 ?>
@@ -57,8 +54,13 @@ require_once '../view/head.php';
     <section>
         <div>
             <button type="submit" name="validate_favorite">Mettre dans mes favoris</button>
-            <button type="button" name="edit_hike">Modifier des informations (uniquement créateur ou admin)</button>
-            <button type="button" name="delete_hike">Supprimer les informations (uniquement créateur ou admin)</button>
+            
+            
+            <?php if($_SESSION['user_id'] === $userID || $_SESSION['user_admin'] === 1 ): ?>
+                <button type="button" name="edit_hike">Modifier des informations (uniquement créateur ou admin)</button>
+                <button type="button" name="delete_hike">Supprimer les informations (uniquement créateur ou admin)</button>
+            <?php endif; ?>   
+
         </div>
     </section>
     <?php require_once '../view/footer.php'; ?>
