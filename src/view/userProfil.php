@@ -44,5 +44,14 @@ require_once '../view/head.php';
     <section>
         <a href="/createhike"><button type="button" name="add_hike">ajouter un hike</button></a>
     </section>
+    <section>
+        <h3>Gestion administration</h3>
+        <div>
+            <button type="button" name="admin_delete_user">supprimer un utilisateur</button>
+            <button type="button" name="admin_delete_hike">supprimer un hike</button>
+            <button type="button" name="admin_delete_tag">supprimer un tag</button>
+        </div>
+
+    </section>
 </body>
 <?php require_once '../view/footer.php'; ?>
