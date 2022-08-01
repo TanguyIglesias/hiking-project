@@ -20,27 +20,7 @@ class SendHike extends Database
             $update_date = $_POST['update_date'];
             $image_path = $_POST['image_path'];
             $content = $_POST['content'];
-            $userId = 3;
-
-            // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-        if (isset($_FILES['image_path']) && $_FILES['image_path']['error'] == 0)
-        {
-        // Testons si le fichier n'est pas trop gros
-        if ($_FILES['image_path']['size'] <= 8000000)
-            {
-                // Testons si l'extension est autorisée
-                $fileInfo = pathinfo($_FILES['image_path']['name']);
-                $extension = $fileInfo['extension'];
-                $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
-                if (in_array($extension, $allowedExtensions))
-                {
-                        // On peut valider le fichier et le stocker définitivement
-                        move_uploaded_file($_FILES['image_path']['tmp_name'], '../image/' . basename($_FILES['/application/src/image']['name']));
-                        echo "L'envoi a bien été effectué !";
-                }
-            }
-        }
-        
+            $userId = 3;        
         
             $query = "INSERT INTO hikes (user_id, hike_name, content, creation_date, update_date, distance, elevation_gain, duration, image_path) VALUES (:user_id, :hike_name, :content, :creation_date, :update_date, :distance, :elevation_gain, :duration, :image_path)";
             $query_run = $db->prepare($query);
