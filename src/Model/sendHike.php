@@ -20,7 +20,7 @@ class SendHike extends Database
             $update_date = $_POST['update_date'];
             $image_path = $_POST['image_path'];
             $content = $_POST['content'];
-            $userId = 3;
+            $userId = $_SESSION['user_id'];
 
             // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
         if (isset($_FILES['image_path']) && $_FILES['image_path']['error'] == 0)
