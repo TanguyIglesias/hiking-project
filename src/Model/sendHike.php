@@ -17,7 +17,7 @@ class SendHike extends Database
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
-                $dtat = ucfirst($data);
+                $data = ucfirst($data);
                 return $data;
               }
 
