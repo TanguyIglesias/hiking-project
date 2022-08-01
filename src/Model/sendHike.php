@@ -12,11 +12,12 @@ class SendHike extends Database
         if (isset($_POST['submit']))
         {
             $hike_name = $distance = $elevation_gain = $duration = $creation_date = $update_date = $content = "";
-            
+        
             function test_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
+                $data = ucfirst($data);
                 return $data;
             }
 
@@ -52,7 +53,7 @@ class SendHike extends Database
             }
 
             if(empty($_POST["distance"]))
-            {
+        {
                 header("Location:/createhike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
@@ -81,8 +82,8 @@ class SendHike extends Database
                     $_SESSION['elevationErr'] = "Seul les chiffres et les : sont autorisés.";
                     exit();
                 }
-            }
-
+        }
+        
             // if(empty($_POST["duration"]))
             // {
             //     header("Location:/createhike");
@@ -159,7 +160,7 @@ class SendHike extends Database
                 echo'ERROR';
             }
         } 
-}
+    }
 
 
 
