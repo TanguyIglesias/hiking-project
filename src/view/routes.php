@@ -29,5 +29,6 @@ $routes = [
         '/logout' => 'Model/logOut.php',
         '/sendHike' => 'Model/sendHike.php',
         '/deleteHike' => 'Model/deleteHike.php',
+        '/deleteTag' => 'Model/deleteTag.php',
     ],
 ];

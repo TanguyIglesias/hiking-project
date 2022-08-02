@@ -8,20 +8,20 @@ class DeleteUser extends Database
 
         $db=$this->connectDb();
 
-        $userID = $_POST['deleteUserId'];
+        $userID = $_POST['deleteUser'];
 
         echo $userID;
 
         $data =[
-            'deleteUserId' => $userID
+            'deleteUser' => $userID
         ];
 
-        $query = "DELETE FROM users WHERE user_id=:deleteUserId";
+        $query = "DELETE FROM users WHERE user_id=:deleteUser";
         $query_run = $db->prepare($query);
-        $query_run->bindParam(':deleteUserId', $data['deleteUserId']);
+        $query_run->bindParam(':deleteUser', $data['deleteUser']);
         if($query_run->execute($data))
         {
-            header("Location:/");   
+            header("Location:/user");   
         }
     }
 }
