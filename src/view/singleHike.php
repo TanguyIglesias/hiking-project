@@ -1,10 +1,27 @@
 <?php 
+if (!isset($_SESSION)) { session_start(); }
 
 require_once '../Model/hikeInfo.php';
+require_once '../Model/Tag.php';
 $hike_id = $_GET['hikeID'];
 $hike = new HikeInfo;
 $hikeInfo = $hike->hikeInfo($hike_id);
 
+$tag = new Tag();
+$tagInfo = $tag->linkTag($hike_id);
+$tagArr = array();
+foreach ($tagInfo as $key => $value)
+{
+    array_push($tagArr,$tag->getTagById($value['tag_id']));
+}
+
+// echo '<pre>';
+// var_dump($tagInfo);
+// echo '</pre>';
+
+// echo '<pre>';
+// var_dump($tagArr);
+// echo '</pre>';
 
 
 
@@ -46,6 +63,12 @@ require_once '../view/head.php';
             <li>Date de mise à jour: <?= $updateDate ?></li>
             <li>Created by: <?=$creatorFirstname?> <?=$creatorLastname?></li>
         </ul>
+        <p>Tags:</p>
+        <ol>
+        <?php foreach ( $tagArr as $key => $value):  ?>
+            <li><p><?= $value['tag_name']?> </p></li>
+        <?php endforeach ?>
+    </ol>
     </section>
     <section>
         <div>
@@ -60,6 +83,7 @@ require_once '../view/head.php';
             <?php if($_SESSION['user_id'] === $userID || $_SESSION['user_admin'] === 1 ): ?>
                 <button type="button" name="edit_hike">Modifier des informations (uniquement créateur ou admin)</button>
                 <button type="button" name="delete_hike">Supprimer les informations (uniquement créateur ou admin)</button>
+                <a href="/editTags?hikeID=<?= $hike_id ?>"><button type="button" name="edit_tags">Modifier les Tags (uniquement créateur ou admin)</button></a>
             <?php endif; ?>   
 
         </div>
