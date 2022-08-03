@@ -1,10 +1,34 @@
 <?php
 //if (!isset($_SESSION)) { session_start(); }
 require '../Model/test.php';
+require_once '../Model/Tag.php';
 $hikes = new HikeManager();
 $hikesInfo = $hikes->getHikes();
-$title = 'Homepage';
+if(isset($_SESSION['nickname'])){
+  $title = "Homepage - " . $_SESSION['nickname'];
+}else
+{
+  $title = 'Homepage';
+}
 require_once '../view/head.php';
+
+$tag = new Tag();
+$tagInfo = $tag->linkTag($hikesInfo['hike_id']);
+$tagArr = array();
+foreach ($tagInfo as $key => $value)
+{
+    array_push($tagArr,$tag->getTagById($value['tag_id']));
+}
+
+// echo '<pre>';
+// var_dump($hikesInfo);
+// echo '</pre>';
+
+// echo '<pre>';
+// var_dump($tagInfo);
+// echo '</pre>';
+
+
 ?>
 
 <body>
@@ -28,6 +52,10 @@ require_once '../view/head.php';
             <p>Distance: <?= $value['distance'] ?>km</p>
           </div>
         </a>
+
+        <?php foreach ( $tagArr as $key => $value):  ?>
+            <li><p><?= $value['tag_name']?> </p></li>
+        <?php endforeach ?>
       
       </div>
     <?php endforeach ?>

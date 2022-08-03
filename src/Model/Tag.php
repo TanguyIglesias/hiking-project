@@ -20,6 +20,7 @@ class Tag extends Database
         if($query_run->execute())
         {
             header("Location:/");
+
         }else{
             echo 'ERROR';
         }
@@ -47,4 +48,25 @@ class Tag extends Database
         $req = $db->query("SELECT * FROM tags WHERE tag_id ='$tagId'");
         return $req->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function deleteTag($tagId)
+    {
+        $db = $this->connectdb();
+
+        $query_remove_link = "DELETE FROM tag_hike WHERE tag_id =:tag_id";
+        $req = $db->prepare($query_remove_link);
+        $req->bindParam(":tag_id", $tagId);
+
+        $query = "DELETE FROM tags WHERE tag_id =:tag_id";
+        $query_run = $db->prepare($query);
+        $query_run->bindParam(":tag_id", $tagId);
+
+        if($req->execute() && $query_run->execute())
+        {
+            header("Location:/");
+        }else{
+            echo 'ERROR';
+        }
+    }
+
 }
