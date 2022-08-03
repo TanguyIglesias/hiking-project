@@ -1,5 +1,6 @@
 <?php 
 require '../Model/userInfo.php';
+require '../Model/test.php';
 
 
 $user= new UserInfo;
@@ -42,6 +43,28 @@ require_once '../view/head.php';
         </section>
             <h3>Mes randonnées crées</h3>
             <div>
+                <?php
+                    
+                    $hikes = new HikeManager();
+                    $hikesInfo = $hikes->getHikes();
+                    //var_dump($hikesInfo);
+                ?>
+
+                <?php foreach ($hikesInfo as $key => $value) : ?>
+                    <?php if($value['user_id'] === $_SESSION['user_id']): ?>
+                        <div>
+                            <a href="/hike?hikeID=<?php echo $value['hike_id'] ?>">
+                                <div>
+                                <h3><?= $value['hike_name'] ?></h3>
+                                <img src="<?= $value["image_path"]?>" alt="Photo: <?= $value['hike_name'] ?>" style="width:30%";>
+                                <p>Date mise à jour: <?= $value['update_date'] ?></p>
+                                <p>Temps: <?= $value['duration'] ?></p>
+                                <p>Distance: <?= $value['distance'] ?>km</p>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach ?>
 
             </div>
         <section>
@@ -85,7 +108,6 @@ require_once '../view/head.php';
                 <div id="users" class="tabcontent" style="display: block">
 
                     <?php
-                    require '../Model/test.php';
 
                     $users= new UserManager;
                     $user = $users->getUsers();
