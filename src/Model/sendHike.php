@@ -168,7 +168,6 @@ class SendHike extends Database
             }
         } 
     }
-}
 
 
 
