@@ -18,7 +18,7 @@ class SendForm extends Database
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
-                $data = ucfirst($data);
+                //$data = ucfirst($data); il met majuscule à la première lettre d'un email
                 return $data;
             }
 
@@ -155,6 +155,7 @@ class SendForm extends Database
             $query_run->bindParam(':user_admin',$data['user_admin']);
             if ($query_run->execute())
             {
+                require_once '../controler/sendMailRegister.php';
                 header("Location:/");
             }else{
                 echo'ERROR';

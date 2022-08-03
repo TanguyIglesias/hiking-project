@@ -18,72 +18,72 @@ class UpdateForm extends Database
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;
-              }
+            }
 
-              if(empty($_POST["firstname"]))
-              {
-                  header("Location:/update");
-                  $_SESSION['error'] = 'Formulaire Incomplet';
-                  exit();
-              }else
-              {
-                  $firstname = test_input($_POST['firstname']);
-                  if(!preg_match("/^[a-zA-Z-' ]*$/", $firstname))
-                  {
-                      header("Location:/update");
-                      $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
-                      exit();
-                  }
-              }
+            if(empty($_POST["firstname"]))
+            {
+                header("Location:/update");
+                $_SESSION['error'] = 'Formulaire Incomplet';
+                exit();
+            }else
+            {
+                $firstname = test_input($_POST['firstname']);
+                if(!preg_match("/^[a-zA-Z-' ]*$/", $firstname))
+                {
+                    header("Location:/update");
+                    $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                    exit();
+                }
+            }
 
-              if(empty($_POST["lastname"]))
-              {
-                  header("Location:/update");
-                  $_SESSION['error'] = 'Formulaire Incomplet';
-                  exit();                
-              }else
-              {
-                  $lastname = test_input($_POST["lastname"]);
-                  if(!preg_match("/^[a-zA-Z-' ]*$/", $lastname))
-                  {
-                      header("Location:/update");
-                      $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
-                      exit();
-                  }
-              }
+            if(empty($_POST["lastname"]))
+            {
+                header("Location:/update");
+                $_SESSION['error'] = 'Formulaire Incomplet';
+                exit();                
+            }else
+            {
+                $lastname = test_input($_POST["lastname"]);
+                if(!preg_match("/^[a-zA-Z-' ]*$/", $lastname))
+                {
+                    header("Location:/update");
+                    $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                    exit();
+                }
+            }
 
-              if(empty($_POST["nickname"]))
-              {
-                  header("Location:/update");
-                  $_SESSION['error'] = 'Formulaire Incomplet';
-                  exit();
-              }else
-              {
-                  $nickname = test_input($_POST["nickname"]);
-                  if(!preg_match("/^[a-zA-Z-' ]*$/", $nickname))
-                  {
-                      header("Location:/update");
-                      $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
-                      exit();
-                  }
-              }
+            if(empty($_POST["nickname"]))
+            {
+                header("Location:/update");
+                $_SESSION['error'] = 'Formulaire Incomplet';
+                exit();
+            }else
+            {
+                $nickname = test_input($_POST["nickname"]);
+                if(!preg_match("/^[a-zA-Z-' ]*$/", $nickname))
+                {
+                    header("Location:/update");
+                    $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                    exit();
+                }
+            }
 
-              if(empty($_POST["mail"]))
-              {
-                  header("Location:/update");
-                  $_SESSION['error'] = 'Formulaire Incomplet';
-                  exit();
-              }else 
-              {
-                  $mail = test_input($_POST["mail"]);
-                  if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
-                  {
-                      header("Location:/update");
-                      $_SESSION['mailErr'] = "Invalid email format";
-                      exit();
-                  }
-              }
-              if(empty($_POST['password'])){
+            if(empty($_POST["mail"]))
+            {
+                header("Location:/update");
+                $_SESSION['error'] = 'Formulaire Incomplet';
+                exit();
+            }else 
+            {
+                $mail = test_input($_POST["mail"]);
+                if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+                {
+                    header("Location:/update");
+                    $_SESSION['mailErr'] = "Invalid email format";
+                    exit();
+                }
+            }
+            if(empty($_POST['password'])){
 
                 $password = test_input($_SESSION['password']);
 
@@ -92,8 +92,7 @@ class UpdateForm extends Database
                 $password = test_input($_POST["password"]);
                 $password = password_hash($password, PASSWORD_DEFAULT);
             }
-              
-
+            
                 $city = $_POST['city'];
                 $country = $_POST['country'];
                 $user_id = $_SESSION['user_id'];
@@ -120,6 +119,7 @@ class UpdateForm extends Database
             $query_run->bindParam(':country', $data['country']);
             if($query_run->execute())
             {
+                require_once '../controler/sendMailUpdate.php';
                 header("Location:/user");
             }else
             {

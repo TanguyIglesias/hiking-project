@@ -21,10 +21,15 @@ class SendHike extends Database
                 return $data;
             }
 
-              
 
-            
-
+            $image_path = test_input($_POST["image_path"]);
+                if (!filter_var($image_path, FILTER_VALIDATE_URL)) 
+                {
+                    header("Location:/createhike");
+                    $_SESSION['urlErr'] = "Invalid url format";
+                    exit();
+                }
+            }
 
             $content = $_POST['content'];
                 $content = test_input($content);
