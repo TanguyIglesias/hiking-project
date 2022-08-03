@@ -17,7 +17,7 @@ require_once '../view/head.php';
     <?php require_once '../view/header.php';?>
     <ol>
         <?php foreach ( $getTag as $key => $value):  ?>
-             <li><p><?= $value['tag_name']?> </p></li>
+            <li><p><?= $value['tag_name']?> </p></li>
         <?php endforeach ?>
     </ol>
 
