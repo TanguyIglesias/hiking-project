@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once '../Model/hikeInfo.php';
 $hike_id = $_GET['hikeID'];
@@ -6,47 +6,43 @@ $hike = new HikeInfo;
 $hikeInfo = $hike->hikeInfo($hike_id);
 
 
-
-
 $hike_name = $hikeInfo["hike_name"];
 $userID = $hikeInfo["user_id"];
 $distance = $hikeInfo["distance"];
 $elevationGain = $hikeInfo["elevation_gain"];
 $duration = $hikeInfo["duration"];
-$creationDate = $hikeInfo["creation_date"];
-$updateDate = $hikeInfo["update_date"];
-$image = $hikeInfo ["image_path"];
-$content = $hikeInfo ["content"];
-$title=$hike_name;
+$creationDate = $hike->orderCreationData($hike_id);
+$updateDate = $hike->orderUpdateData($hike_id);
+$image = $hikeInfo["image_path"];
+$content = $hikeInfo["content"];
+$title = $hike_name;
 
 require_once '../Model/userInfo.php';
-$user= new UserInfo;
+$user = new UserInfo;
 $userInfoByID = $user->userInfoByID($userID);
 
 $creatorFirstname = $userInfoByID['firstname'];
 $creatorLastname = $userInfoByID['lastname'];
 
 
-
-
-require_once '../view/head.php'; 
+require_once '../view/head.php';
 
 ?>
 
 <body>
     <?php require_once '../view/header.php'; ?>
     <figure>
-        
+        <img src="<?= $image?>" alt="Photo du paysage">
     </figure>
     <h1><?= $hike_name ?></h1>
     <section>
-        <ul>            
+        <ul>
             <li><?= $distance ?> km </li>
             <li><?= $elevationGain ?> m</li>
             <li><?= $duration ?></li>
             <li><?= $creationDate ?></li>
             <li><?= $updateDate ?></li>
-            <li>Created by:<?=$creatorFirstname?> <?=$creatorLastname?></li>
+            <li>Created by:<?= $creatorFirstname ?> <?= $creatorLastname ?></li>
         </ul>
     </section>
     <section>

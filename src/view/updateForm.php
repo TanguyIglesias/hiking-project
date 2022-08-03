@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION)) { session_start(); }
+//if (!isset($_SESSION)) { session_start(); }
 require '../Model/userInfo.php';
 $user= new UserInfo;
 $userInfo = $user->userInfo();

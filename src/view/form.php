@@ -1,5 +1,5 @@
 <?php 
-if (!isset($_SESSION)) { session_start(); }$title='Sign In';
+//if (!isset($_SESSION)) { session_start(); }$title='Sign In';
 // echo '<pre>';
 // var_dump($_SESSION);
 // echo '</pre>';
@@ -35,7 +35,7 @@ require_once '../view/head.php';
         unset($_SESSION['nameErr']);
         unset($_SESSION['mailErr']);
         require_once '../view/footer.php';
-     ?>
+    ?>
 
 </body>
 </html>

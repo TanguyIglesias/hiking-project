@@ -19,7 +19,7 @@ class SendHike extends Database
                 $data = htmlspecialchars($data);
                 $data = ucfirst($data);
                 return $data;
-              }
+            }
 
 
             $image_path = test_input($_POST["image_path"]);

@@ -1,5 +1,5 @@
 <?php 
-session_start();
+//session_start();
 $title='Sign In';
 require_once '../view/head.php';
 ?>

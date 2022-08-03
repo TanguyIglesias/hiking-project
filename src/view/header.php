@@ -1,6 +1,6 @@
 <?php
 //require '../Model/register.php';
-if (!isset($_SESSION)) { session_start(); } 
+//if (!isset($_SESSION)) { session_start(); } 
 ?>
 
 <header style="text-align: center; background-color: lightgrey; padding-bottom: 20px; width:100%">
