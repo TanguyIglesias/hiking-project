@@ -8,6 +8,7 @@ $hikesInfo = $hikes->getHikes();
 $tags = new Tag();
 $tag = $tags->getTag();
 
+
 $title = 'Homepage';
 require_once '../view/head.php';
 ?>

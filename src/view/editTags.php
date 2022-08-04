@@ -29,7 +29,7 @@ require_once '../view/head.php';
 <?php require_once '../view/header.php';?>
     <form method="POST" action="/editTag">
             <?php foreach ( $getTag as $key => $value):  ?>
-                <input type="checkbox" value="<?= $value['tag_id']?>" name="tag_name[]" 
+                <input type="checkbox" value="<?= $value['tag_id']?>" name="tag_id[]" 
                 
                 
                 <?php foreach($tagArr as $key => $tag){

@@ -1,7 +1,10 @@
 <?php 
 //session_start();
+require_once '../Model/Tag.php';
 $title='Sign In';
 require_once '../view/head.php';
+$tag = new Tag();
+$getTag = $tag->getTag();
 ?>
 
 <body>
@@ -28,6 +31,10 @@ require_once '../view/head.php';
         <?= (isset($_SESSION['contentErr'])) ? $_SESSION['contentErr'] : "" ?>
         <br>
         <input type="text" name="image_path" placeholder="url image"><span style="color:red"><?= (isset($_SESSION['urlErr'])) ? $_SESSION['urlErr'] : "" ?></span>
+        <br>
+        <?php foreach ( $getTag as $key => $value):  ?>
+                <input type="checkbox" value="<?= $value['tag_id']?>" name="tag_id[]"><?= $value['tag_name']?>  
+        <?php endforeach?>
         <br>
         <button type="submit" name="submit">Envoyer</button>
         <p class="label is-small has-text-danger" style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></p>

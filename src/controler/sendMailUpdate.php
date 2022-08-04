@@ -21,7 +21,7 @@ $mail->Host = "smtp.gmail.com";           // Specify main and backup SMTP server
 $mail->Username = "samenjoysprl@gmail.com";  // SMTP username
 $mail->Password = 'spomexeuusojsodb';         // SMTP password 
 
-$mail->setFrom('samenjoysprl@gmail.com', 'Hicking Project');
+$mail->setFrom('samenjoysprl@gmail.com', 'Hiking Project');
 $mail->addAddress($_POST['mail'], 'name-is-optional');
 
 $mail->isHTML(true);                      // Set email format to HTML

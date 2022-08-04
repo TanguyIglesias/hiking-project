@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once '../Model/Tag.php';
 
@@ -45,7 +44,7 @@ function addTag()
             }
         }
 
-        $tag->addTag($tag_name);
+        $tag->createTag($tag_name);
     }
 }
 addTag();

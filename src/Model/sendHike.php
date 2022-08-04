@@ -1,4 +1,5 @@
 <?php
+require_once '../Model/Tag.php';
 
 class SendHike extends Database
 {
@@ -8,7 +9,7 @@ class SendHike extends Database
 
 
         $db=$this->connectDb();
-
+        
         if (isset($_POST['submit']))
         {
             $hike_name = $distance = $elevation_gain = $duration = $creation_date = $update_date = $content = "";
@@ -41,13 +42,24 @@ class SendHike extends Database
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
             }else
-            {
+            {   
                 $hike_name = test_input($_POST['hike_name']);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $hike_name))
+                $req = $db->query("SELECT * FROM hikes WHERE hike_name='$hike_name'");
+                if($req->rowCount()>0)
                 {
                     header("Location:/createhike");
-                    $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                    $_SESSION['nameDupes'] = 'Ce nom existe déjà';
                     exit();
+
+                }else
+                {
+                    if(!preg_match("/^[a-zA-Z-' ]*$/", $hike_name))
+                    {
+                        
+                        header("Location:/createhike");
+                         $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        exit();                 
+                    }
                 }
             }
 
@@ -81,23 +93,8 @@ class SendHike extends Database
                     $_SESSION['elevationErr'] = "Seul les chiffres sont autorisés.";
                     exit();
                 }
-        }
+            }
         
-            // if(empty($_POST["duration"]))
-            // {
-            //     header("Location:/createhike");
-            //     $_SESSION['error'] = 'Formulaire Incomplet';
-            //     exit();
-            // }else
-            // {
-            //     $duration = test_input($_POST['duration']);
-            //     if(!preg_match("/^[0-9]*$/", $duration))
-            //     {
-            //         header("Location:/createhike");
-            //         $_SESSION['durationErr'] = "Seul les chiffres et les : sont autorisés.";
-            //         exit();
-            //     }
-            // }
 
             if(empty($_POST["content"]))
             {
@@ -159,12 +156,14 @@ class SendHike extends Database
             $query_run->bindParam(':image_path',$data['image_path']);
             $query_run->bindParam(':content',$data['content']);
             $query_run->bindParam(':user_id',$data['user_id']);
+            $query_run->execute();
             
-            if ($query_run->execute())
-            {
-                header("Location:/");
-            }else{
-                echo'ERROR';
+            $tag_id = $_POST['tag_id'];
+            
+            $tag = new Tag();
+            var_dump($tag_id);
+            foreach($tag_id as $value){
+                $tag->addTag($value, $hike_name);
             }
         } 
     }
