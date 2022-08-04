@@ -35,12 +35,18 @@ require_once '../view/head.php';
                 <p>Country: <?= $country ?></p>
             </div>
         </section>
-        <section>
+
+        <button type="button" class="collapsible">Favorite</button>
+        <section id="favPanel" style="display:none">
             <h3>Favoris</h3>
             <div>
 
             </div>
         </section>
+
+        <button type="button" class="collapsible">Hikes Created</button>
+        <section id="hikePanel" style="display:none">
+
             <h3>Mes randonnées crées</h3>
             <div>
                 <?php
@@ -65,15 +71,14 @@ require_once '../view/head.php';
                         </div>
                     <?php endif; ?>
                 <?php endforeach ?>
-
             </div>
-        <section>
             <a href="/createhike"><button type="button" name="add_hike">ajouter un hike</button></a>
         </section>
 
-        
         <?php if($_SESSION['user_admin'] === 1 ): ?>
-            <section>
+
+            <button type="button" class="collapsible">Administration Panel</button>
+            <section id="adminPanel" style="display:none">
                 <h3>Gestion administration</h3>
 
                 <div class="tab">
@@ -118,6 +123,7 @@ require_once '../view/head.php';
                     <table id="userTable">
                     <tr class="header">
                         <th style="width:25%;">User ID</th>
+                        <th style="width:25%;">Nickname</th>
                         <th style="width:25%;">Firstame</th>
                         <th style="width:25%;">Lastname</th>
                         <th style="width:25%;"></th>
@@ -127,21 +133,11 @@ require_once '../view/head.php';
 
                         <tr>
                             <td><?= $value['user_id']?></td>
+                            <td><?= $value['nickname']?></td>
                             <td><?= $value['firstname']?></td>
                             <td><?=$value['lastname']?></td>
                             <td>
-                                <!-- <button id="modal-btn" onclick="display()"> modal to delete</button>
-                                        <div class="modal" style="display:none">
-                                            <div class="modal-content">
-                                                <button class="close-btn">Close</button>
-                                                <p>Delete this user ?</p>
-                                                <form action="/deleteUser" method="POST">
-                                                    <input type="text" name="deleteUser" value="<?=$value['user_id']?>" style="display:none">
-                                                    <button type="submit" name="submit">Delete</button>
-                                                </form>
-                                            </div>
-                                        </div> -->
-                                <form action="/deleteUser" method="POST">
+                                <form action="/deleteUser" method="POST" onsubmit="return confirm('Are you sure you want to delete this user: <?=$value['nickname']?>');">
                                     <input type="text" name="deleteUser" value="<?=$value['user_id']?>" style="display:none">
                                     <button type="submit" name="submit">Delete</button>
                                 </form>
@@ -150,7 +146,6 @@ require_once '../view/head.php';
 
                     <?php endforeach ?>
                     </table>
-
                     <script>
                         function userFunction() {
                             // Declare variables
@@ -175,24 +170,6 @@ require_once '../view/head.php';
                         }
                     </script>
 
-<!--                     <script>
-                        let modalBtn = document.getElementById("modal-btn");
-                        let modal = document.querySelector(".modal");
-                        let closeBtn = document.querySelector(".close-btn");
-
-                        function display(){
-                            modal.style.display = "block"
-                        }
-                        closeBtn.onclick = function(){
-                            modal.style.display = "none"
-                        }
-                        window.onclick = function(e){
-                            if(e.target == modal){
-                                modal.style.display = "none"
-                            }
-                        }
-                    </script> -->
-                
                 </div>
 
                 <div id="hikes" class="tabcontent" style="display: none">
@@ -219,7 +196,7 @@ require_once '../view/head.php';
                                 <td><?= $value['hike_name']?></td>
 
                                 <td>
-                                    <form action="/deleteHike" method="POST">
+                                    <form action="/deleteHike" method="POST" onsubmit="return confirm('Are you sure you want to delete this hike: <?=$value['hike_name']?>');">
                                         <input type="text" name="deleteHikeId" value="<?=$value['hike_id']?>" style="display:none">
                                         <button type="submit" name="submit">Delete</button>
                                     </form>
@@ -277,7 +254,7 @@ require_once '../view/head.php';
                                 <td><?= $value['tag_name']?></td>
 
                                 <td>
-                                    <form action="/deleteTag" method="POST">
+                                    <form action="/deleteTag" method="POST" onsubmit="return confirm('Are you sure you want to delete this tag: <?=$value['tag_name']?>');">
                                         <input type="text" name="deleteTag" value="<?=$value['tag_id']?>" style="display:none">
                                         <button type="submit" name="submit">Delete</button>
                                     </form>
@@ -311,12 +288,25 @@ require_once '../view/head.php';
                             }
                         </script>
                 </div >
-                    
-                    
-
             </section>
         <?php endif; ?>
         <a href="/"><button type="button" name="HomePage">Homepage</button></a>
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                content.style.display = "none";
+                } else {
+                content.style.display = "block";
+                }
+            });
+            }
+        </script>
     </main>
     <?php require_once '../view/footer.php'; ?>
 
