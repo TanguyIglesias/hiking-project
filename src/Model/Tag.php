@@ -27,7 +27,7 @@ class Tag extends Database
 
     public function checkTag(string $tagName)
     {   
-       
+
         $db = $this->connectdb();
         $req = $db->query("SELECT * FROM tags WHERE tag_name='$tagName'");
         return $req->rowCount();

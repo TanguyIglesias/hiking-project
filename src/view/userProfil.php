@@ -130,6 +130,17 @@ require_once '../view/head.php';
                             <td><?= $value['firstname']?></td>
                             <td><?=$value['lastname']?></td>
                             <td>
+                                <!-- <button id="modal-btn" onclick="display()"> modal to delete</button>
+                                        <div class="modal" style="display:none">
+                                            <div class="modal-content">
+                                                <button class="close-btn">Close</button>
+                                                <p>Delete this user ?</p>
+                                                <form action="/deleteUser" method="POST">
+                                                    <input type="text" name="deleteUser" value="<?=$value['user_id']?>" style="display:none">
+                                                    <button type="submit" name="submit">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div> -->
                                 <form action="/deleteUser" method="POST">
                                     <input type="text" name="deleteUser" value="<?=$value['user_id']?>" style="display:none">
                                     <button type="submit" name="submit">Delete</button>
@@ -163,6 +174,24 @@ require_once '../view/head.php';
                             }
                         }
                     </script>
+
+<!--                     <script>
+                        let modalBtn = document.getElementById("modal-btn");
+                        let modal = document.querySelector(".modal");
+                        let closeBtn = document.querySelector(".close-btn");
+
+                        function display(){
+                            modal.style.display = "block"
+                        }
+                        closeBtn.onclick = function(){
+                            modal.style.display = "none"
+                        }
+                        window.onclick = function(e){
+                            if(e.target == modal){
+                                modal.style.display = "none"
+                            }
+                        }
+                    </script> -->
                 
                 </div>
 
@@ -183,7 +212,7 @@ require_once '../view/head.php';
                             <th style="width:25%;">Name</th>
                         </th>
 
-                        <?php foreach ( $hike as $key => $value):  ?>
+                        <?php foreach ($hike as $key => $value):  ?>
 
                             <tr>
                                 <td><?= $value['hike_id']?></td>
@@ -287,6 +316,7 @@ require_once '../view/head.php';
 
             </section>
         <?php endif; ?>
+        <a href="/"><button type="button" name="HomePage">Homepage</button></a>
     </main>
     <?php require_once '../view/footer.php'; ?>
 

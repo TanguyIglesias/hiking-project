@@ -49,8 +49,6 @@ class TagManager extends Database {
 
         $req = $db->query('SELECT * FROM tags');
 
-        
-
         return $req->fetchAll(PDO::FETCH_ASSOC);
 
     }
