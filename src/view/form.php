@@ -36,6 +36,6 @@ require_once '../view/head.php';
         unset($_SESSION['mailErr']);
         require_once '../view/footer.php';
     ?>
-
+<a href="/"><button type="button" name="HomePage">Homepage</button></a>
 </body>
 </html>

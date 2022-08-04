@@ -20,7 +20,7 @@ $routes = [
         '/pinterest' => 'view/pinterest.php',
         '/deleteHike' => 'view/deleteHike.php',
         '/tags' => 'view/tag.php',
-        '/editTags' => 'view/editTags.php'
+        '/editTags' => 'view/editTags.php',
     ],
     // Routes de la méthode POST
     'POST' => [

@@ -47,9 +47,7 @@ require_once '../view/head.php';
 
 <body>
     <?php require_once '../view/header.php'; ?>
-    <figure>
-        <img src="<?= $image?>" alt="Photo du paysage">
-    </figure>
+
     <h1><?= $hike_name ?></h1>
     <section>
         <img src="<?=$image?>" alt="<?= $hike_name ?>" style="width:50%;">
@@ -77,13 +75,14 @@ require_once '../view/head.php';
         <div>
             <button type="submit" name="validate_favorite">Mettre dans mes favoris</button>
             
-            
+            <?php if(isset($_SESSION['user_id'])):?>
             <?php if($_SESSION['user_id'] === $userID || $_SESSION['user_admin'] === 1 ): ?>
                 <button type="button" name="edit_hike">Modifier des informations (uniquement créateur ou admin)</button>
                 <button type="button" name="delete_hike">Supprimer les informations (uniquement créateur ou admin)</button>
                 <a href="/editTags?hikeID=<?= $hike_id ?>"><button type="button" name="edit_tags">Modifier les Tags (uniquement créateur ou admin)</button></a>
-            <?php endif; ?>   
-
+            <?php endif; ?>
+            <?php endif; ?> 
+            <a href="/"><button type="button" name="HomePage">Homepage</button></a>
         </div>
     </section>
     <?php require_once '../view/footer.php'; ?>
