@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../Model/Tag.php';
 $title = 'Edit Tags';
 $hike_id = $_GET['hikeID'];
