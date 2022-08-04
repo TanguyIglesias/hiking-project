@@ -161,7 +161,6 @@ class SendHike extends Database
             $tag_id = $_POST['tag_id'];
             
             $tag = new Tag();
-            var_dump($tag_id);
             foreach($tag_id as $value){
                 $tag->addTag($value, $hike_name);
             }

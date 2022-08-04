@@ -50,8 +50,6 @@ class Tag extends Database
 
     public function addTag($tagId, $hike_name)
     {
-        var_dump($tagId);
-        $name_request = $hike_id_fetch = $hike_id  = "";
         $db = $this->connectdb();
         $name_request = $db->query("SELECT hike_id FROM hikes WHERE hike_name = '$hike_name'");
         $hike_id_fetch = $name_request->fetch(PDO::FETCH_ASSOC);
@@ -61,9 +59,6 @@ class Tag extends Database
         $query_run->bindParam(':hike_id',$hike_id);
         $query_run->bindParam(':tagId',$tagId);
         $query_run->execute();
-        $tagId = $hike_name = "";
-        var_dump($hike_id);
 
-        
     }
 }
