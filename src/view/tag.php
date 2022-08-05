@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../Model/Tag.php';
 $title = 'Tags';
 $tag = new Tag();

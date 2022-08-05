@@ -47,7 +47,6 @@ require_once '../view/head.php';
 
 <body>
     <?php require_once '../view/header.php'; ?>
-
     <h1><?= $hike_name ?></h1>
     <section>
         <img src="<?=$image?>" alt="<?= $hike_name ?>" style="width:50%;">
@@ -62,7 +61,7 @@ require_once '../view/head.php';
         <p>Tags:</p>
         <ol>
         <?php foreach ( $tagArr as $key => $value):  ?>
-            <li><p><?= $value['tag_name']?> </p></li>
+            <li><?= $value['tag_name']?></li>
         <?php endforeach ?>
     </ol>
     </section>

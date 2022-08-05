@@ -9,8 +9,24 @@ $tags = new Tag();
 $tag = $tags->getTag();
 
 
-$title = 'Homepage';
+if(isset($_SESSION['nickname'])){
+  $title = "Homepage - " . $_SESSION['nickname'];
+}else
+{
+  $title = 'Homepage';
+}
 require_once '../view/head.php';
+
+
+// echo '<pre>';
+// var_dump($hikesInfo);
+// echo '</pre>';
+
+// echo '<pre>';
+// var_dump($tagInfo);
+// echo '</pre>';
+
+
 ?>
 
 <body>
@@ -68,6 +84,10 @@ require_once '../view/head.php';
             </ol>
           </div>
         </a>
+
+        <?php foreach ( $tagArr as $key => $value):  ?>
+            <li><p><?= $value['tag_name']?> </p></li>
+        <?php endforeach ?>
       
       </div>
     <?php endforeach ?>

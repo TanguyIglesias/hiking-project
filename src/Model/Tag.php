@@ -20,6 +20,7 @@ class Tag extends Database
         if($query_run->execute())
         {
             header("Location:/");
+
         }else{
             echo 'ERROR';
         }

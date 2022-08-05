@@ -1,4 +1,7 @@
 <?php
+require_once '../Model/Tag.php';
+var_dump($_POST);
+
 
 class DeleteTag extends Database
 {
