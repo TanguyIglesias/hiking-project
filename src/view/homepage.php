@@ -34,8 +34,7 @@ require_once '../view/head.php';
 
   <button type="button" class="collapsible">Filter by tags</button>
 
-  <div id="myBtnContainer" class="content" style="display:none"
-  >
+  <div id="myBtnContainer" class="content" style="display:none">
     <button class="btn active" onclick="filterSelection('all')"> Show all</button>
     <?php foreach ($tag as $key => $btnvalue) : ?>
       <button class="btn" onclick="filterSelection('<?=$btnvalue['tag_name']?>')"> <?=$btnvalue['tag_name']?></button>
@@ -84,7 +83,6 @@ require_once '../view/head.php';
             </ol>
           </div>
         </a>
-      
       </div>
     <?php endforeach ?>
   </section>
