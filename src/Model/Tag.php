@@ -81,7 +81,7 @@ class Tag extends Database
 
     }
 
-    public function addTagByID($tagId, $hike_id)
+    public function addRelation($tagId, $hike_id)
     {
         $db = $this->connectdb();
         $query ="INSERT INTO tag_hike (hike_id, tag_id) VALUES (:hike_id, :tagId)";
