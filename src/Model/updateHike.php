@@ -1,5 +1,8 @@
 <?php
 
+echo '<pre>';
+var_dump($_SESSION["hikeID"]);
+echo '</pre>';
 
 class UpdateHike extends Database
 {
@@ -20,104 +23,110 @@ class UpdateHike extends Database
                 return $data;
             }
 
-            if(empty($_POST["hike_name"]))
+            if(empty($_POST['hikename']))
             {
-                header("Location:/update");
+                header("Location:/updateHike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
             }else
             {
-                $hikeName = test_input($_POST['hike_name']);
+                $hikeName = test_input($_POST['hikename']);
                 if(!preg_match("/^[a-zA-Z-' ]*$/", $hikeName))
                 {
-                    header("Location:/update");
+                    header("Location:/updateHike");
                     $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
                     exit();
                 }
             }
 
-            if(empty($_POST["content"]))
+            if(empty($_POST['hikecontent']))
             {
-                header("Location:/update");
+                header("Location:/updateHike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();                
             }else
             {
-                $hikeContent = test_input($_POST["content"]);
+                $hikeContent = test_input($_POST['hikecontent']);
                 if(!preg_match("/^[a-zA-Z-' ]*$/", $hikeContent))
                 {
-                    header("Location:/update");
+                    header("Location:/updateHike");
                     $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
                     exit();
                 }
             }
 
-            if(empty($_POST["distance"]))
+            if(empty($_POST['hikedistance']))
             {
-                header("Location:/update");
+                header("Location:/updateHike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
             }else
             {
-                $hikeDistance = test_input($_POST["distance"]);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $hikeDistance))
+                $hikeDistance = test_input($_POST['hikedistance']);
+                if(!preg_match("/^[0-9]*$/", $hikeDistance))
                 {
-                    header("Location:/update");
+                    header("Location:/updateHike");
                     $_SESSION['nameErr'] = "Seul les chiffres sont autorisés.";
                     exit();
                 }
             }
 
-            if(empty($_POST["elevation"]))
+            if(empty($_POST['hikeelevation']))
             {
-                header("Location:/update");
+                header("Location:/updateHike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
             }else 
             {
-                $hikeElevation = test_input($_POST["elevation"]);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $hikeElevation))
+                $hikeElevation = test_input($_POST['hikeelevation']);
+                if(!preg_match("/^[0-9]*$/", $hikeElevation))
                 {
-                    header("Location:/update");
+                    header("Location:/updateHike");
                     $_SESSION['nameErr'] = "Seul les chiffres sont autorisés.";
                     exit();
                 }
             }
-            if(empty($_POST["duration"]))
+            if(empty($_POST['hikeduration']))
             {
-                header("Location:/update");
+                header("Location:/updateHike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
             }else 
             {
-                $hikeDuration = test_input($_POST["duration"]);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $hikeDuration))
+                $hikeDuration = test_input($_POST['hikeduration']);
+                if(!preg_match("/^[0-9]*$/", $hikeDuration))
                 {
-                    header("Location:/update");
+                    header("Location:/updateHike");
                     $_SESSION['nameErr'] = "Seul les chiffres sont autorisés.";
                     exit();
                 }
             }
 
-            if(empty($_POST["image_path"]))
+            if(empty($_POST['hikeimage']))
             {
-                header("Location:/update");
+                header("Location:/updateHike");
                 $_SESSION['error'] = 'Formulaire Incomplet';
                 exit();
             }else 
             {
-                $hikeImage = test_input($_POST["image_path"]);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $hikeImage))
+                $hikeImage = test_input($_POST['hikeimage']);
+                if (!filter_var($hikeImage, FILTER_VALIDATE_URL)) 
                 {
-                    header("Location:/update");
-                    $_SESSION['nameErr'] = "Seul les chiffres sont autorisés.";
+                    header("Location:/createhike");
+                    $_SESSION['urlErr'] = "Invalid url format";
                     exit();
                 }
             }
             
-                $user_id = $_SESSION['user_id'];
-        
-            
+            //$hikeUpdateDate = date('Y-m-d');
+
+            $_POST['update_date'] = date("d/m/Y");
+            $update_date = $_POST["update_date"];
+            $update_explode = explode("/", $update_date);
+            $update = "$update_explode[2]-$update_explode[1]-$update_explode[0]";
+
+            $hikeID = $_SESSION['hikeID'];
+
             $data = [
                 'hike_name' => $hikeName,
                 'content' => $hikeContent,
@@ -125,12 +134,14 @@ class UpdateHike extends Database
                 'elevation' => $hikeElevation,
                 'duration' => $hikeDuration,
                 'image_path' => $hikeImage,
+                'update_date' => $update,
             ];
-            $query = "UPDATE users SET hike_name=:hikename, content=:hikecontent, distance=:hikedistance, elevation=:hikeelevation, duration=:hikeduration, image_path=:hikeimage WHERE user_id =$user_id";
+            $query = "UPDATE hikes SET hike_name=:hikename, content=:hikecontent, update_date=:update_date, distance=:hikedistance, elevation_gain=:hikeelevation, duration=:hikeduration, image_path=:hikeimage WHERE hike_id = $hikeID";
 
             $query_run = $db->prepare($query);
             $query_run->bindParam(':hikename', $data['hike_name']);
             $query_run->bindParam(':hikecontent', $data['content']);
+            $query_run->bindParam(':update_date', $data['update_date']);
             $query_run->bindParam(':hikedistance', $data['distance']);
             $query_run->bindParam(':hikeelevation', $data['elevation']);
             $query_run->bindParam(':hikeduration', $data['duration']);
@@ -138,15 +149,15 @@ class UpdateHike extends Database
             if($query_run->execute())
             {
                 require_once '../controler/sendMailUpdate.php';
-                header("Location:/user");
-            }else
+                header("Location:/hike?hikeID=$hikeID");
+                unset($_SESSION["hikeID"]);
+            } else
             {
                 echo'ERROR';
             }
-
         }
     }
 }
 
-$update = new UpdateForm();
-$update->updateForm();
+$update = new UpdateHike();
+$update->updateHike();
