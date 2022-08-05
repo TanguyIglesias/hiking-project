@@ -167,7 +167,5 @@ class SendHike extends Database
         } 
     }
 
-
-
 $send = new SendHike();
 $send->sendHike();
