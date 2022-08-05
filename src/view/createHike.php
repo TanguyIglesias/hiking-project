@@ -30,7 +30,8 @@ $getTag = $tag->getTag();
         <input type="text" name="content" placeholder="Description">
         <?= (isset($_SESSION['contentErr'])) ? $_SESSION['contentErr'] : "" ?>
         <br>
-        <input type="text" name="image_path" placeholder="url image"><span style="color:red"><?= (isset($_SESSION['urlErr'])) ? $_SESSION['urlErr'] : "" ?></span>
+        <input type="text" name="image_path" placeholder="url image"><span style="color:red">
+        <?= (isset($_SESSION['urlErr'])) ? $_SESSION['urlErr'] : "" ?></span>
         <br>
         <?php foreach ( $getTag as $key => $value):  ?>
                 <input type="checkbox" value="<?= $value['tag_id']?>" name="tag_id[]"><?= $value['tag_name']?>  
@@ -49,6 +50,8 @@ $getTag = $tag->getTag();
     unset($_SESSION['elevationErr']);
     unset($_SESSION['durationErr']);
     unset($_SESSION['contentErr']);
+    unset($_SESSION['nameDupes']);
+    unset($_SESSION['tagErr']);
     require_once '../view/footer.php';?>
 <a href="/"><button type="button" name="HomePage">Homepage</button></a>
 </body>
