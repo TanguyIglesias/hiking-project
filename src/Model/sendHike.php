@@ -164,6 +164,7 @@ class SendHike extends Database
             foreach($tag_id as $value){
                 $tag->addTag($value, $hike_name);
             }
+            header("Location:/");
         } 
     }
 

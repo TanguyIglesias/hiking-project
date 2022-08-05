@@ -31,10 +31,10 @@ class SendForm extends Database
                 }else
                 {
                     $firstname = test_input($_POST['firstname']);
-                    if(!preg_match("/^[a-zA-Z-' ]*$/", $firstname))
+                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $firstname))
                     {
                         header("Location:/registration");
-                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        $_SESSION['firstnameErr'] = "Seul les lettres et les espaces sont autorisés.";
                         exit();
                     }
                 }
@@ -47,10 +47,10 @@ class SendForm extends Database
                 }else
                 {
                     $lastname = test_input($_POST["lastname"]);
-                    if(!preg_match("/^[a-zA-Z-' ]*$/", $lastname))
+                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $lastname))
                     {
                         header("Location:/registration");
-                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        $_SESSION['lastnameErr'] = "Seul les lettres et les espaces sont autorisés.";
                         exit();
                     }
                 }
@@ -63,12 +63,22 @@ class SendForm extends Database
                 }else
                 {
                     $nickname = test_input($_POST["nickname"]);
-                    if(!preg_match("/^[a-zA-Z-' ]*$/", $nickname))
+                    $nickname_req = $db->query("SELECT * FROM users WHERE nickname = '$nickname'");
+                    if($nickname_req->rowCount()>0)
                     {
                         header("Location:/registration");
-                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        $_SESSION['nicknameDupes'] = 'Ce nickname existe déjà';
                         exit();
+                    }else
+                    {
+                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $nickname))
+                        {
+                            header("Location:/registration");
+                            $_SESSION['nicknameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                            exit();
+                        }
                     }
+                    
                 }
 
                 if(empty($_POST["mail"]))
@@ -78,12 +88,22 @@ class SendForm extends Database
                     exit();
                 }else 
                 {
+
                     $mail = test_input($_POST["mail"]);
-                    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+                    $mail_req = $db->query("SELECT * FROM users WHERE mail='$mail'");
+                    if($mail_req->rowCount()>0)
                     {
                         header("Location:/registration");
-                        $_SESSION['mailErr'] = "Invalid email format";
+                        $_SESSION['mailDupes'] = 'Cette adresse mail existe déjà';
                         exit();
+                    }else
+                    {
+                        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+                        {
+                            header("Location:/registration");
+                            $_SESSION['mailErr'] = "Invalid email format";
+                            exit();
+                        }
                     }
                 }
                 if(empty($_POST["password"]))
@@ -96,39 +116,27 @@ class SendForm extends Database
                     $password = test_input($_POST["password"]);
                     $password = password_hash($password, PASSWORD_DEFAULT);
                 }
-                if (empty($_POST['city']))
-                {
-                    header("Location:/registration");
-                    $_SESSION['error'] = 'Formulaire Incomplet';
-                    exit();
-                }else 
+                if (!empty($_POST['city']))
                 {
                     $city = test_input($_POST['city']);
-                    if(!preg_match("/^[a-zA-Z-' ]*$/", $city))
+                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $city))
                     {
                         header("Location:/registration");
-                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        $_SESSION['cityErr'] = "Seul les lettres et les espaces sont autorisés.";
                         exit();
                     }
                 }
-                if (empty($_POST['country']))
-                {
-                    header("Location:/registration");
-                    $_SESSION['error'] = 'Formulaire Incomplet';
-                    exit();
-                }else 
+                if (!empty($_POST['country']))
                 {
                     $city = test_input($_POST['country']);
-                    if(!preg_match("/^[a-zA-Z-' ]*$/", $country))
+                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $country))
                     {
                         header("Location:/registration");
-                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        $_SESSION['countryErr'] = "Seul les lettres et les espaces sont autorisés.";
                         exit();
                     }
                 }
             
-            //$city = $_POST['city'];
-            //$country = $_POST['country'];
             $user_admin= 0;
         
         

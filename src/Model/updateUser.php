@@ -27,13 +27,21 @@ class UpdateForm extends Database
                 exit();
             }else
             {
-                $firstname = test_input($_POST['firstname']);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $firstname))
+                if($_SESSION['firstname'] == $_POST['firstname'])
                 {
-                    header("Location:/update");
-                    $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
-                    exit();
+                    $firstname = $_POST['firstname'];
+                }else
+                {
+                    
+                    $firstname = test_input($_POST['firstname']);
+                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $firstname))
+                    {
+                        header("Location:/update");
+                        $_SESSION['firstnameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        exit();
+                    }
                 }
+                
             }
 
             if(empty($_POST["lastname"]))
@@ -43,13 +51,20 @@ class UpdateForm extends Database
                 exit();                
             }else
             {
-                $lastname = test_input($_POST["lastname"]);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $lastname))
+                if($_SESSION['lastname'] == $_POST['lastname'])
                 {
-                    header("Location:/update");
-                    $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
-                    exit();
+                    $lastname = $_POST['lastname'];
+                }else
+                {
+                    $lastname = test_input($_POST["lastname"]);
+                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $lastname))
+                    {
+                        header("Location:/update");
+                        $_SESSION['lastnameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        exit();
+                    }
                 }
+                
             }
 
             if(empty($_POST["nickname"]))
@@ -59,13 +74,30 @@ class UpdateForm extends Database
                 exit();
             }else
             {
-                $nickname = test_input($_POST["nickname"]);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $nickname))
+                if($_SESSION['nickname'] == $_POST['nickname'])
                 {
-                    header("Location:/update");
-                    $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
-                    exit();
+                    $nickname = $_POST['nickname'];
+                }else
+                {
+                    $nickname = test_input($_POST["nickname"]);
+                    $nickname_req = $db->query("SELECT * FROM users WHERE nickname = '$nickname'");
+                    if($nickname_req->rowCount()>0)
+                    {
+                        header("Location:/update");
+                        $_SESSION['nicknameDupes'] = 'Ce nickname existe déjà';
+                        exit();
+                    }else
+                    {
+                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $nickname))
+                        {
+                            header("Location:/update");
+                            $_SESSION['nicknameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                            exit();
+                        }
+                    }
+                    
                 }
+                
             }
 
             if(empty($_POST["mail"]))
@@ -75,17 +107,35 @@ class UpdateForm extends Database
                 exit();
             }else 
             {
-                $mail = test_input($_POST["mail"]);
-                if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+                if($_SESSION['mail'] == $_POST['mail'])
                 {
-                    header("Location:/update");
-                    $_SESSION['mailErr'] = "Invalid email format";
-                    exit();
+                    $mail = $_POST['mail'];
+                }else
+                {
+
+                    $mail = test_input($_POST["mail"]);
+                    $mail_req = $db->query("SELECT * FROM users WHERE mail='$mail'");
+                    if($mail_req->rowCount()>0)
+                    {
+                        header("Location:/update");
+                        $_SESSION['mailDupes'] = 'Cette adresse mail existe déjà';
+                        exit();
+                    }else
+                    {
+                        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+                        {
+                            header("Location:/update");
+                            $_SESSION['mailErr'] = "Invalid email format";
+                            exit();
+                        }
+                    }
+                
                 }
+                
             }
             if(empty($_POST['password'])){
 
-                $password = test_input($_SESSION['password']);
+                $password = $_POST['password'];
 
             }else{
 
@@ -93,8 +143,41 @@ class UpdateForm extends Database
                 $password = password_hash($password, PASSWORD_DEFAULT);
             }
             
-                $city = $_POST['city'];
-                $country = $_POST['country'];
+            if (!empty($_POST['city']))
+                {
+                    if($_SESSION['city'] == $_POST['city'])
+                    {
+                        $city = $_POST['city'];
+                    }else
+                    {
+                        $city = test_input($_POST['city']);
+                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $city))
+                        {
+                            header("Location:/update");
+                            $_SESSION['cityErr'] = "Seul les lettres et les espaces sont autorisés.";
+                            exit();
+                        }
+                    }
+                    
+                }
+
+                if (!empty($_POST['country']))
+                {
+                    if($_SESSION['country'] == $_POST['country'])
+                    {
+                        $country = $_POST['country'];
+                    }else
+                    {
+                        $country = test_input($_POST['country']);
+                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $country))
+                        {
+                            header("Location:/update");
+                            $_SESSION['countryErr'] = "Seul les lettres et les espaces sont autorisés.";
+                            exit();
+                        }
+                    }
+                    
+                }
                 $user_id = $_SESSION['user_id'];
         
             
