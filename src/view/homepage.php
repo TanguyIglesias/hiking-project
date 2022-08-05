@@ -15,6 +15,7 @@ if(isset($_SESSION['nickname'])){
 {
   $title = 'Homepage';
 }
+
 require_once '../view/head.php';
 
 
@@ -26,10 +27,21 @@ require_once '../view/head.php';
 // var_dump($tagInfo);
 // echo '</pre>';
 
-
+  
+  if(isset($_GET['hikeName'])){
+    $hikeName = $_GET['hikeName'];
+    echo "<script language='javascript' type='text/javascript'>
+    function creationHikeAlert(){
+    let hikeName = `<?php echo'$hikeName'?>`;
+    alert('The hike \"${hikeName}\" has been added successfully!');
+    }
+    </script>";
+  }
+  unset($_GET['hikeName']);
 ?>
 
-<body>
+<body onload="creationHikeAlert()">
+
   <?php require_once '../view/header.php' ?>
 
   <button type="button" class="collapsible">Filter by tags</button>

@@ -190,6 +190,7 @@ class UpdateForm extends Database
                 'city' => $city,
                 'country' => $country,
             ];
+            
             $query = "UPDATE users SET firstname=:firstname, lastname=:lastname, nickname=:nickname, mail=:mail, password=:password, city=:city, country=:country WHERE user_id =$user_id";
 
             $query_run = $db->prepare($query);

@@ -19,3 +19,4 @@ foreach($tag_id as $value){
 }
 
 header("Location:/hike?hikeID=$hike_id");
+unset($_SESSION["hikeID"]);
