@@ -35,6 +35,6 @@ $routes = [
         '/addTags' => 'controler/addTags.php',
         '/editTag' => 'controler/editTag.php',
         '/deleteTag' => 'Model/deleteTag.php',
-        '/updateHike' => 'Model/updateHike.php'
+        '/updateHikes' => 'Model/updateHike.php'
     ],
 ];

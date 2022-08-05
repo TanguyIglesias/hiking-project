@@ -22,7 +22,7 @@ $mail->Username = "samenjoysprl@gmail.com";  // SMTP username
 $mail->Password = 'spomexeuusojsodb';         // SMTP password 
 
 $mail->setFrom('samenjoysprl@gmail.com', 'Hicking Project');
-$mail->addAddress($_POST['mail'], 'name-is-optional');
+$mail->addAddress($_SESSION['mail'], 'name-is-optional');
 
 $mail->isHTML(true);                      // Set email format to HTML
 $mail->Subject = 'Thanks for your update';
