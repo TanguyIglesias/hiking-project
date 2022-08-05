@@ -18,4 +18,4 @@ foreach($tag_id as $value){
     $tag->addRelation($value, $hike_id);
 }
 
-header("Location:/user");
+header("Location:/hike?hikeID=$hike_id");
