@@ -1,5 +1,5 @@
 <?php
-
+require_once '../Model/Tag.php';
 
 class DeleteHike extends Database
 {
@@ -24,5 +24,10 @@ class DeleteHike extends Database
         }
     }
 }
+$hikeID = $_POST['deleteHikeId'];
+
+$tag = new Tag();
+$tag->deleteRelation($hikeID);
+
 $delete= new DeleteHike();
 $delete->deleteHike();

@@ -1,6 +1,5 @@
 <?php
 
-
 class DeleteTag extends Database
 {
 

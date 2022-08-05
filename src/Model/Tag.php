@@ -59,6 +59,35 @@ class Tag extends Database
         $query_run->bindParam(':hike_id',$hike_id);
         $query_run->bindParam(':tagId',$tagId);
         $query_run->execute();
+    }
 
+    public function deleteRelation($hike_id)
+    {
+        $db = $this->connectdb();
+
+/*         $query = "DELETE FROM tag_hike WHERE hike_id=$hike_id";
+        $query_run = $db->prepare($query);
+        $query_run->bindParam(':hike_id',$hike_id);
+        $query_run->execute(); */
+
+        $data =[
+            'deleteHikeId' => $hike_id
+        ];
+
+        $query = "DELETE FROM tag_hike WHERE hike_id=:deleteHikeId";
+        $query_run = $db->prepare($query);
+        $query_run->bindParam(':deleteHikeId', $data['deleteHikeId']);
+        $query_run->execute($data);
+
+    }
+
+    public function addTagByID($tagId, $hike_id)
+    {
+        $db = $this->connectdb();
+        $query ="INSERT INTO tag_hike (hike_id, tag_id) VALUES (:hike_id, :tagId)";
+        $query_run = $db->prepare($query);
+        $query_run->bindParam(':hike_id',$hike_id);
+        $query_run->bindParam(':tagId',$tagId);
+        $query_run->execute();
     }
 }

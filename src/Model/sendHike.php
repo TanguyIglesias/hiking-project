@@ -57,7 +57,7 @@ class SendHike extends Database
                     {
                         
                         header("Location:/createhike");
-                         $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
+                        $_SESSION['nameErr'] = "Seul les lettres et les espaces sont autorisés.";
                         exit();                 
                     }
                 }
