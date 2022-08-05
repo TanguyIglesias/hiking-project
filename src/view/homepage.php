@@ -84,10 +84,6 @@ require_once '../view/head.php';
             </ol>
           </div>
         </a>
-
-        <?php foreach ( $tagArr as $key => $value):  ?>
-            <li><p><?= $value['tag_name']?> </p></li>
-        <?php endforeach ?>
       
       </div>
     <?php endforeach ?>
