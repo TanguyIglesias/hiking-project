@@ -21,6 +21,7 @@ $routes = [
         '/deleteHike' => 'view/deleteHike.php',
         '/tags' => 'view/tag.php',
         '/editTags' => 'view/editTags.php',
+        '/updateHike' => 'view/updateHike.php'
     ],
     // Routes de la méthode POST
     'POST' => [
@@ -34,5 +35,6 @@ $routes = [
         '/addTags' => 'controler/addTags.php',
         '/editTag' => 'controler/editTag.php',
         '/deleteTag' => 'Model/deleteTag.php',
+        '/updateHikes' => 'Model/updateHike.php'
     ],
 ];

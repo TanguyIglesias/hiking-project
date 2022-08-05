@@ -18,7 +18,7 @@ class SendForm extends Database
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
-                //$data = ucfirst($data); il met majuscule à la première lettre d'un email
+                //$data = ucfirst($data); il met majuscule à la première lettre d'un email ce qui fausse l'adresse. A mettre séparément là où c'est nécessaire.
                 return $data;
             }
 
