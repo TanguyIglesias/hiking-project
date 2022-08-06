@@ -23,10 +23,18 @@ require_once '../view/head.php';
 
     <form action="/addTags" method="POST">
         <input type="text" name="tag_name" placeholder="Add Tags">
+        <span style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></span>
+        <span style="color:red"><?= (isset($_SESSION['tagErr'])) ? $_SESSION['tagErr'] : "" ?></span>
+        <span style="color:red"><?= (isset($_SESSION['nameErr'])) ? $_SESSION['nameErr'] : "" ?></span>
         <button type="submit" name="AddTag">Add</button>
     </form>
+    <a href="/createhike"><button type="button" name="createhike">Back To Create Hike</button></a>
 </body>
 
 <?php
+unset($_SESSION['error']);
+unset($_SESSION['tagErr']);
+unset($_SESSION['nameErr']);
+
 require_once '../view/footer.php';
 ?>

@@ -1,6 +1,12 @@
 <?php 
 require '../Model/userInfo.php';
 require '../Model/test.php';
+require '../Model/Tag.php';
+$hikes = new HikeManager();
+$hikesInfo = $hikes->getHikes();
+$tags = new Tag();
+$tag = $tags->getTag();
+
 
 
 $user= new UserInfo;
@@ -57,15 +63,29 @@ require_once '../view/head.php';
                 ?>
 
                 <?php foreach ($hikesInfo as $key => $value) : ?>
+                    <?php
+                        $hike_id = $value['hike_id'];
+                        $tag = new Tag();
+                        $tagInfo = $tag->linkTag($hike_id);
+                    ?>
                     <?php if($value['user_id'] === $_SESSION['user_id']): ?>
                         <div>
                             <a href="/hike?hikeID=<?php echo $value['hike_id'] ?>">
                                 <div>
-                                <h3><?= $value['hike_name'] ?></h3>
-                                <img src="<?= $value["image_path"]?>" alt="Photo: <?= $value['hike_name'] ?>" style="width:30%";>
-                                <p>Date mise à jour: <?= $value['update_date'] ?></p>
-                                <p>Temps: <?= $value['duration'] ?></p>
-                                <p>Distance: <?= $value['distance'] ?>km</p>
+                                    <h3><?= $value['hike_name'] ?></h3>
+                                    <img src="<?= $value["image_path"]?>" alt="Photo: <?= $value['hike_name'] ?>" style="width:30%";>
+                                    <p>Date mise à jour: <?= $value['update_date'] ?></p>
+                                    <p>Temps: <?= $value['duration'] ?></p>
+                                    <p>Distance: <?= $value['distance'] ?>km</p>
+                                    <ol>
+                                        <?php foreach ( $tagInfo as $key => $value):  ?>
+                                            <?php
+                                            $tag = new Tag();
+                                            $tagName = $tag->getTagById($value['tag_id'])
+                                            ?>
+                                            <li><p><?= $tagName['tag_name']?> </p></li>
+                                        <?php endforeach ?>
+                                    </ol>
                                 </div>
                             </a>
                         </div>

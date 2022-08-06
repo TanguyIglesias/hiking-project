@@ -46,5 +46,6 @@ function addTag()
 
         $tag->createTag($tag_name);
     }
+    header("Location:/createhike");
 }
 addTag();

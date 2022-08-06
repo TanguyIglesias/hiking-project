@@ -1,15 +1,29 @@
 <?php
 if (!isset($_SESSION)) { session_start(); }
 
+///// TAG /////
+require_once '../Model/Tag.php';
+
+$title = 'Edit Tags';
+
+$hike_id = $_GET['hikeID'];
+
+$tag = new Tag();
+$getTag = $tag->getTag();
+$tagInfo = $tag->linkTag($hike_id);
+$tagArr = array();
+
+foreach ($tagInfo as $key => $value)
+{
+array_push($tagArr,$tag->getTagById($value['tag_id']));
+}
+
+///// Hike /////
 require_once '../Model/hikeInfo.php';
 
 $hike_id = $_GET['hikeID'];
 $hike= new HikeInfo;
 $hikeInfo = $hike->hikeInfo($hike_id);
-
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
 
 $hikeName = $hikeInfo["hike_name"];
 $hikeContent= $hikeInfo["content"];
@@ -46,6 +60,22 @@ require_once '../view/head.php';
                 <span style="color:red"><?= (isset($_SESSION['urlErr'])) ? $_SESSION['urlErr'] : "" ?></span>
                 <br>
                 <p>Date de la dernière modification : <?= $hikeUpdateDate?></p>
+
+
+
+                <?php foreach ( $getTag as $key => $value):  ?>
+                <input type="checkbox" value="<?= $value['tag_id']?>" name="tag_id[]" 
+                
+                <?php foreach($tagArr as $key => $tag){
+
+                        if($tag["tag_name"] == $value['tag_name'])echo 'checked="checked"';
+
+                        }?>><?= $value['tag_name']?> 
+
+                <?php endforeach ?>
+
+
+
                 <button type="submit" name="update_hike">Update</button>
                 <p class="label is-small has-text-danger" style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></p>
         </form>

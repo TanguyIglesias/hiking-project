@@ -76,11 +76,15 @@ require_once '../view/head.php';
             <button type="submit" name="validate_favorite">Mettre dans mes favoris</button>
             
             <?php if(isset($_SESSION['user_id'])):?>
-            <?php if($_SESSION['user_id'] === $userID || $_SESSION['user_admin'] === 1 ): ?>
-                <a href="/updateHike?hikeID=<?= $hike_id ?>"><button type="button" name="edit_hike">Modifier des informations (uniquement créateur ou admin)</button></a>
-                <button type="button" name="delete_hike">Supprimer les informations (uniquement créateur ou admin)</button>
-                <a href="/editTags?hikeID=<?= $hike_id ?>"><button type="button" name="edit_tags">Modifier les Tags (uniquement créateur ou admin)</button></a>
-            <?php endif; ?>
+                <?php if($_SESSION['user_id'] === $userID || $_SESSION['user_admin'] === 1 ): ?>
+                    <a href="/updateHike?hikeID=<?= $hike_id ?>"><button type="button" name="edit_hike">EDIT Hike</button></a>
+                
+                    <form action="/deleteHike" method="POST" onsubmit="return confirm('Are you sure you want to delete this hike: <?=$hike_name?>');">
+                        <input type="text" name="deleteHikeId" value="<?=$hike_id?>" style="display:none">
+                        <button type="submit" name="submit">Delete</button>
+                    </form>
+                    
+                <?php endif; ?>
             <?php endif; ?> 
             <a href="/"><button type="button" name="HomePage">Homepage</button></a>
         </div>

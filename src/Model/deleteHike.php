@@ -10,7 +10,6 @@ class DeleteHike extends Database
 
         $hikeID = $_POST['deleteHikeId'];
 
-
         $data =[
             'deleteHikeId' => $hikeID
         ];

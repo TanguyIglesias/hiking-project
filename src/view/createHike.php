@@ -37,10 +37,13 @@ $getTag = $tag->getTag();
                 <input type="checkbox" value="<?= $value['tag_id']?>" name="tag_id[]"><?= $value['tag_name']?>  
         <?php endforeach?>
         <br>
+        <a href="/tags"><button type="button" name="add_tag">CREATE Tags</button></a>
+        <br>
         <button type="submit" name="submit">Envoyer</button>
         <p class="label is-small has-text-danger" style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></p>
 
     </form>
+    
 
     <?php
     unset($_SESSION["urlErr"]);  

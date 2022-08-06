@@ -21,8 +21,6 @@ class UpdateHike extends Database
         if (isset($_POST['update_hike']))
         {
 
-            //$hikeName = $hikeContent = $hikeDistance = $hikeElevation = $hikeDuration = $hikeImage = "";
-
             function test_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
@@ -159,7 +157,22 @@ class UpdateHike extends Database
             $query_run->bindParam(':hikeduration', $data['duration']);
             $query_run->bindParam(':hikeimage', $data['image_path']);
             if($query_run->execute())
-            {
+            {   
+
+                require_once '../Model/Tag.php';
+                
+                $tag_id = $_POST['tag_id'];
+
+                $tag = new Tag();
+
+                $tag->deleteRelation($hike_id);
+
+                foreach($tag_id as $value){
+                    $tag->addRelation($value, $hike_id);
+                }
+
+
+                
                 require_once '../controler/sendMailUpdate.php';
                 header("Location:/hike?hikeID=$hike_id");
             } else
