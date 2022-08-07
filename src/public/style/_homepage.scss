@@ -1,4 +1,14 @@
 .homepage-main {
+
+    .collapsible{
+        border-radius: 0px;
+        color: white;
+        text-transform: capitalize;
+        font-weight: bolder;
+        background-color: $color-green;
+        width: 100%;
+    }
+    
     .container {
         overflow: hidden;
     }

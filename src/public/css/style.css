@@ -70,6 +70,14 @@ header nav div form {
   /* Add a light grey background on mouse-over */
   /* Add a dark background to the active button */
 }
+.homepage-main .collapsible {
+  border-radius: 0px;
+  color: white;
+  text-transform: capitalize;
+  font-weight: bolder;
+  background-color: green;
+  width: 100%;
+}
 .homepage-main .container {
   overflow: hidden;
 }
