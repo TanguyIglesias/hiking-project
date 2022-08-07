@@ -27,11 +27,11 @@ $userID= $userInfo['user_id'];
 
 require_once '../view/head.php'; 
 ?>
-<?php require_once '../view/header.php';?>
 
 <body>
-    <main>
-            <a href="/update"><button  name="edit">Modifier</button></a>
+    <?php require_once '../view/header.php';?>
+    <main class="userProfile-main">
+            
         <h1><?= $firstname . " " . $lastname ?></h1>
         <section>
             <div>
@@ -40,6 +40,7 @@ require_once '../view/head.php';
                 <p>City: <?= $city ?></p>
                 <p>Country: <?= $country ?></p>
             </div>
+            <a href="/update"><button  name="edit">Edit Profile</button></a>
         </section>
 
         <button type="button" class="collapsible">Favorite</button>
@@ -54,7 +55,7 @@ require_once '../view/head.php';
         <section id="hikePanel" style="display:none">
 
             <h3>Mes randonnées crées</h3>
-            <div>
+            <div class="allHikes">
                 <?php
                     
                     $hikes = new HikeManager();
@@ -69,11 +70,11 @@ require_once '../view/head.php';
                         $tagInfo = $tag->linkTag($hike_id);
                     ?>
                     <?php if($value['user_id'] === $_SESSION['user_id']): ?>
-                        <div>
+                        <div class="createdHike">
                             <a href="/hike?hikeID=<?php echo $value['hike_id'] ?>">
                                 <div>
                                     <h3><?= $value['hike_name'] ?></h3>
-                                    <img src="<?= $value["image_path"]?>" alt="Photo: <?= $value['hike_name'] ?>" style="width:30%";>
+                                    <img src="<?= $value["image_path"]?>" alt="Photo: <?= $value['hike_name'] ?>";>
                                     <p>Date mise à jour: <?= $value['update_date'] ?></p>
                                     <p>Temps: <?= $value['duration'] ?></p>
                                     <p>Distance: <?= $value['distance'] ?>km</p>
@@ -83,7 +84,7 @@ require_once '../view/head.php';
                                             $tag = new Tag();
                                             $tagName = $tag->getTagById($value['tag_id'])
                                             ?>
-                                            <li><p><?= $tagName['tag_name']?> </p></li>
+                                            <li><p>#<?= $tagName['tag_name']?> </p></li>
                                         <?php endforeach ?>
                                     </ol>
                                 </div>
@@ -97,7 +98,7 @@ require_once '../view/head.php';
 
         <?php if($_SESSION['user_admin'] === 1 ): ?>
 
-            <button type="button" class="collapsible">Administration Panel</button>
+            <button type="button" class="collapsible">Admin Panel</button>
             <section id="adminPanel" style="display:none">
                 <h3>Gestion administration</h3>
 
@@ -205,8 +206,8 @@ require_once '../view/head.php';
 
                         <table id="hikeTable">
                         <tr class="header">
-                            <th style="width:25%;">Hike ID</th>
-                            <th style="width:25%;">Name</th>
+                            <th style="width:50%;">Hike ID</th>
+                            <th style="width:50%;">Name</th>
                         </th>
 
                         <?php foreach ($hike as $key => $value):  ?>
@@ -220,6 +221,7 @@ require_once '../view/head.php';
                                         <input type="text" name="deleteHikeId" value="<?=$value['hike_id']?>" style="display:none">
                                         <button type="submit" name="submit">Delete</button>
                                     </form>
+                                    <a href="/hike?hikeID=<?= $value['hike_id']?>"><button type="button" name="HomePage">Edit</button></a>
                                 </td>
                             </tr>
 
@@ -263,8 +265,8 @@ require_once '../view/head.php';
 
                         <table id="tagTable">
                         <tr class="header">
-                            <th style="width:25%;">Tag ID</th>
-                            <th style="width:25%;">Name Tag</th>
+                            <th style="width:50%;">Tag ID</th>
+                            <th style="width:50%;">Name Tag</th>
                         </th>
 
                         <?php foreach ( $tag as $key => $value):  ?>
@@ -311,6 +313,7 @@ require_once '../view/head.php';
             </section>
         <?php endif; ?>
         <a href="/"><button type="button" name="HomePage">Homepage</button></a>
+
         <script>
             var coll = document.getElementsByClassName("collapsible");
             var i;
@@ -327,6 +330,7 @@ require_once '../view/head.php';
             });
             }
         </script>
+        
     </main>
     <?php require_once '../view/footer.php'; ?>
 

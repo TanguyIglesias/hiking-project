@@ -3,34 +3,43 @@
 //if (!isset($_SESSION)) { session_start(); } 
 ?>
 
-<header style="text-align: center; background-color: lightgrey; padding-bottom: 20px; width:100%">
+<header>
     <div>
         <img src="" alt="">
         <a href="/" style="text-decoration: none; color: black"><h1>Hiking Adventure Time</h1></a>
     </div>
-    <div>
-        <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search...">
+    <nav>
+        <?php
+        if($_SERVER['REQUEST_URI'] === "/"){
+            echo '<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search...">';
+        }
+        else {
+            echo "<span></span>";
+        }
         
+        ?>
         <div>
             <?php
-                // var_dump($_SESSION);
+                //var_dump($_SERVER['REQUEST_URI']);
 
                 if(isset($_SESSION['firstname'])) :?>
                     <p>Connected as <a href="/user"><?=($_SESSION['nickname']);?></a></p> 
                     <form action="/logout" method="post">
-                    <input type="submit" value="Logout" name="logout">
+                        <input class="button" type="submit" value="Logout" name="logout">
                     </form>
                 <?php endif; ?>   
                 <?php if(!isset($_SESSION['firstname'])) :?>
-                    <p>Session not started, please Login</p>
+                    <p>Please login for more option</p>
+
                     <form action="/register" method="post">
-                    <input type="text" name="nickname" placeholder="Nickname">
-                    <br>
-                    <input type="password" name="password" placeholder="Password">
-                    <br>
-                    <input type="submit" value="Login" name="login">
+                        <input type="text" name="nickname" placeholder="Nickname">
+                        <br>
+                        <input type="password" name="password" placeholder="Password">
+                        <br>
+                        <input class="button" type="submit" value="Login" name="login">
                     </form>
-                    <a href="/registration"><button>Sign In</button></a>
+                    <br>
+                    <a href="/registration"><button>Sign Up</button></a>
                     <?php endif; ?>   
         <?php       
 /* 
@@ -42,5 +51,5 @@
                 } */
             ?>
         </div>
-    </div>
+    </nav>
 </header>

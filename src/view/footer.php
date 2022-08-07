@@ -1,4 +1,4 @@
-<footer style="text-align: center; width:100%; background-color: lightgrey; margin-top: 30px; padding-bottom: 10px">
+<footer>
     <div>
         <img src="" alt="">
         <h1>Hiking Adventure Time</h1>
@@ -10,5 +10,4 @@
             <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank"><i class="fa-brands fa-youtube-square"></i></a>
         </div>
     </div>
-
 </footer>

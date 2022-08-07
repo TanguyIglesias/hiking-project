@@ -1,0 +1,36 @@
+header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 128px;
+    padding-right: 128px;
+    text-align: center;
+    background-color: $color-green;
+    
+    //width:100%;
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        #searchInput {
+            height: 32px;
+            width: 256px;
+            border-radius: 16px;
+
+        }
+
+        div{
+            display: flex;
+            flex-direction: column;
+
+            form{
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+            }
+
+        }
+    }
+}

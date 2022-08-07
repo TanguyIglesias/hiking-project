@@ -1,6 +1,8 @@
 <body>
-<p>400 Not Found</p>
-<p>Time to go Hiking</p>
+    <main class="notfound-main">
+        <p>400 Not Found</p>
+        <p>Time to go Hiking</p>
+    </main>
 </body>
 <style>
     body {

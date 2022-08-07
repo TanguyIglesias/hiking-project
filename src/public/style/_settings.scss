@@ -1,0 +1,16 @@
+body{
+    margin: 0px;
+}
+
+button, .button {
+    height: 32px;
+    //width: 128px;
+    width:fit-content;
+    padding: 0px 32px 0px 32px;
+    border-radius: 16px;
+    cursor:pointer;
+}
+
+input {
+    border-radius: 16px;
+}

@@ -13,22 +13,25 @@ require_once '../view/head.php';
 ?>
 
 <body>
-    <?php require_once '../view/header.php';?>
-    <ol>
-        <?php foreach ( $getTag as $key => $value):  ?>
-            <li><p><?= $value['tag_name']?> </p></li>
-        <?php endforeach ?>
-    </ol>
+    <main class="createTag-main">
+                <?php require_once '../view/header.php';?>
+        <ol>
+            <?php foreach ( $getTag as $key => $value):  ?>
+                <li><p><?= $value['tag_name']?> </p></li>
+            <?php endforeach ?>
+        </ol>
 
 
-    <form action="/addTags" method="POST">
-        <input type="text" name="tag_name" placeholder="Add Tags">
-        <span style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></span>
-        <span style="color:red"><?= (isset($_SESSION['tagErr'])) ? $_SESSION['tagErr'] : "" ?></span>
-        <span style="color:red"><?= (isset($_SESSION['nameErr'])) ? $_SESSION['nameErr'] : "" ?></span>
-        <button type="submit" name="AddTag">Add</button>
-    </form>
-    <a href="/createhike"><button type="button" name="createhike">Back To Create Hike</button></a>
+        <form action="/addTags" method="POST">
+            <input type="text" name="tag_name" placeholder="Add Tags">
+            <span style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></span>
+            <span style="color:red"><?= (isset($_SESSION['tagErr'])) ? $_SESSION['tagErr'] : "" ?></span>
+            <span style="color:red"><?= (isset($_SESSION['nameErr'])) ? $_SESSION['nameErr'] : "" ?></span>
+            <button type="submit" name="AddTag">Add</button>
+        </form>
+        <a href="/createhike"><button type="button" name="createhike">Back To Create Hike</button></a>
+    </main>
+
 </body>
 
 <?php
