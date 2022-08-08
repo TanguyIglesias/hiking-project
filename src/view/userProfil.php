@@ -10,20 +10,20 @@ $tag = $tags->getTag();
 
 
 $user= new UserInfo;
-$userInfo = $user->userInfo();
+// $userInfo = $user->userInfo();
 // echo '<pre>';
 // var_dump($userInfo);
 // echo '</pre>';
 
-$firstname = $userInfo["firstname"];
-$lastname = $userInfo["lastname"];
-$nickname = $userInfo["nickname"];
-$mail = $userInfo["mail"];
-$password = $userInfo["password"];
-$city = $userInfo["city"];
-$country = $userInfo["country"];
+$firstname = $_SESSION["firstname"];
+$lastname = $_SESSION["lastname"];
+$nickname = $_SESSION["nickname"];
+$mail = $_SESSION["mail"];
+$password = $_SESSION["password"];
+$city = $_SESSION["city"];
+$country = $_SESSION["country"];
 $title="$firstname $lastname";
-$userID= $userInfo['user_id'];
+$userID= $_SESSION['user_id'];
 
 require_once '../view/head.php'; 
 ?>

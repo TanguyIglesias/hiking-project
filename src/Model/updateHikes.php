@@ -58,7 +58,7 @@ class UpdateHike extends Database
 
                 }else
                 {
-                    if(!preg_match("/^[a-zA-Z-' ]*$/", $hike_name))
+                    if(!preg_match("/^([A-Za-z \-]+(?:\'|&#0*39;)*)*[A-Za-z \-]+$/", $hike_name))
                     {
                         
                         header($headerLoc);
@@ -109,12 +109,12 @@ class UpdateHike extends Database
             }else
             {
                 $content = test_input($_POST['content']);
-                if(!preg_match("/^[a-zA-Z-' ]*$/", $content))
-                {
-                    header($headerLoc);
-                    $_SESSION['contentErr'] = "Seul les lettres et les espaces sont autorisés.";
-                    exit();
-                }
+                // if(!preg_match("/^[a-zA-Z-àâáçéèèêëìîíïôòóùûüÂÊÎÔúÛÄËÏÖÜÀÆæÇÉÈŒœÙñý',. ]*$/", $content))
+                // {
+                //     header($headerLoc);
+                //     $_SESSION['contentErr'] = "Seul les lettres et les espaces sont autorisés.";
+                //     exit();
+                // }
             }
 
             $image_path = test_input($_POST["image_path"]);

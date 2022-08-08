@@ -1,16 +1,15 @@
 <?php
 
+
 class Database {
-    
-    function connectDb()
+
+    function connectDb($file='core/setting.ini')
     {
 
-        $servername = "188.166.24.55";
-        $username = "mvc";
-        $password = "Yd370VDnM1t5y19Q";
+        $log= parse_ini_file($file,TRUE);
 
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=jepsen6-mvc", $username, $password);
+            $conn = new PDO('mysql:host=' . $log['log']['SERVER_NAME'] . ';dbname='. $log['log']['dbname'] ,$log['log']['USERNAME'], $log['log']['PASSWORD']);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conn;

@@ -2,14 +2,14 @@
 //if (!isset($_SESSION)) { session_start(); }
 require '../Model/userInfo.php';
 $user= new UserInfo;
-$userInfo = $user->userInfo();
-$firstname = $userInfo["firstname"];
-$lastname = $userInfo["lastname"];
-$nickname = $userInfo["nickname"];
-$mail = $userInfo["mail"];
-$password = $userInfo["password"];
-$city = $userInfo["city"];
-$country = $userInfo["country"];
+// $userInfo = $user->userInfo();
+$firstname = $_SESSION["firstname"];
+$lastname = $_SESSION["lastname"];
+$nickname = $_SESSION["nickname"];
+$mail = $_SESSION["mail"];
+$password = $_SESSION["password"];
+$city = $_SESSION["city"];
+$country = $_SESSION["country"];
 $title='Update User';
 require_once '../view/head.php';
 ?>
@@ -48,6 +48,7 @@ require_once '../view/head.php';
                         <span style="color:red"><?= (isset($_SESSION['countryErr'])) ? $_SESSION['countryErr'] : "" ?></span>
                         <br>
                         <button type="submit" name="submit">Update</button>
+                        <p class="label is-small has-text-danger" style="color:red"><?= (isset($_SESSION['error'])) ? $_SESSION['error'] : "" ?></p>
                 </form>
                 
                 <?php 

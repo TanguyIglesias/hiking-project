@@ -34,7 +34,7 @@ class UpdateForm extends Database
                 {
                     
                     $firstname = test_input($_POST['firstname']);
-                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $firstname))
+                    if(!preg_match("/^([A-Za-z \-]+(?:\'|&#0*39;)*)*[A-Za-z \-]+$/", $firstname))
                     {
                         header("Location:/update");
                         $_SESSION['firstnameErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -57,7 +57,7 @@ class UpdateForm extends Database
                 }else
                 {
                     $lastname = test_input($_POST["lastname"]);
-                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $lastname))
+                    if(!preg_match("/^([A-Za-z \-]+(?:\'|&#0*39;)*)*[A-Za-z \-]+$/", $lastname))
                     {
                         header("Location:/update");
                         $_SESSION['lastnameErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -88,7 +88,7 @@ class UpdateForm extends Database
                         exit();
                     }else
                     {
-                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $nickname))
+                        if(!preg_match("/^([A-Za-z \-]+(?:\'|&#0*39;)*)*[A-Za-z \-]+$/", $nickname))
                         {
                             header("Location:/update");
                             $_SESSION['nicknameErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -135,7 +135,7 @@ class UpdateForm extends Database
             }
             if(empty($_POST['password'])){
 
-                $password = $_POST['password'];
+                $password = $_SESSION['password'];
 
             }else{
 
@@ -143,15 +143,19 @@ class UpdateForm extends Database
                 $password = password_hash($password, PASSWORD_DEFAULT);
             }
             
-            if (!empty($_POST['city']))
+            if (empty($_POST['city']))
                 {
+                    header("Location:/update");
+                    $_SESSION['error'] = 'Formulaire Incomplet';
+                    exit();
+                }
                     if($_SESSION['city'] == $_POST['city'])
                     {
                         $city = $_POST['city'];
                     }else
                     {
                         $city = test_input($_POST['city']);
-                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $city))
+                        if(!preg_match("/^([A-Za-z \-]+(?:\'|&#0*39;)*)*[A-Za-z \-]+$/", $city))
                         {
                             header("Location:/update");
                             $_SESSION['cityErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -159,17 +163,20 @@ class UpdateForm extends Database
                         }
                     }
                     
-                }
 
-                if (!empty($_POST['country']))
+                if (empty($_POST['country']))
                 {
+                    header("Location:/update");
+                    $_SESSION['error'] = 'Formulaire Incomplet';
+                    exit();
+                }
                     if($_SESSION['country'] == $_POST['country'])
                     {
                         $country = $_POST['country'];
                     }else
                     {
                         $country = test_input($_POST['country']);
-                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $country))
+                        if(!preg_match("/^([A-Za-z \-]+(?:\'|&#0*39;)*)*[A-Za-z \-]+$/", $country))
                         {
                             header("Location:/update");
                             $_SESSION['countryErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -177,7 +184,6 @@ class UpdateForm extends Database
                         }
                     }
                     
-                }
                 $user_id = $_SESSION['user_id'];
         
             

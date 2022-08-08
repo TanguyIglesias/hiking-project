@@ -31,7 +31,7 @@ class SendForm extends Database
                 }else
                 {
                     $firstname = test_input($_POST['firstname']);
-                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $firstname))
+                    if(!preg_match("/^[a-zA-Z-àâáçéèèêëìîíïôòóùûüÂÊÎÔúÛÄËÏÖÜÀÆæÇÉÈŒœÙñý' ]*$/", $firstname))
                     {
                         header("Location:/registration");
                         $_SESSION['firstnameErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -47,7 +47,7 @@ class SendForm extends Database
                 }else
                 {
                     $lastname = test_input($_POST["lastname"]);
-                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $lastname))
+                    if(!preg_match("/^[a-zA-Z-àâáçéèèêëìîíïôòóùûüÂÊÎÔúÛÄËÏÖÜÀÆæÇÉÈŒœÙñý' ]*$/", $lastname))
                     {
                         header("Location:/registration");
                         $_SESSION['lastnameErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -71,7 +71,7 @@ class SendForm extends Database
                         exit();
                     }else
                     {
-                        if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $nickname))
+                        if(!preg_match("/^[a-zA-Z0-9a-àâáçéèèêëìîíïôòóùûüÂÊÎÔúÛÄËÏÖÜÀÆæÇÉÈŒœÙñý' ]*$/", $nickname))
                         {
                             header("Location:/registration");
                             $_SESSION['nicknameErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -119,7 +119,7 @@ class SendForm extends Database
                 if (!empty($_POST['city']))
                 {
                     $city = test_input($_POST['city']);
-                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $city))
+                    if(!preg_match("/^[a-zA-Z-àâáçéèèêëìîíïôòóùûüÂÊÎÔúÛÄËÏÖÜÀÆæÇÉÈŒœÙñý' ]*$/", $city))
                     {
                         header("Location:/registration");
                         $_SESSION['cityErr'] = "Seul les lettres et les espaces sont autorisés.";
@@ -129,7 +129,7 @@ class SendForm extends Database
                 if (!empty($_POST['country']))
                 {
                     $city = test_input($_POST['country']);
-                    if(!preg_match("/^[a-zA-Z-é-à-è-ç-' ]*$/", $country))
+                    if(!preg_match("/^[a-zA-Z-àâáçéèèêëìîíïôòóùûüÂÊÎÔúÛÄËÏÖÜÀÆæÇÉÈŒœÙñý' ]*$/", $country))
                     {
                         header("Location:/registration");
                         $_SESSION['countryErr'] = "Seul les lettres et les espaces sont autorisés.";
