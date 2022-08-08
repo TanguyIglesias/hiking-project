@@ -1,4 +1,4 @@
-# Hiking Adeventure Time :
+# Hiking Adventure Time :
 
 This project consist of an web site about hikes created by users.
 
