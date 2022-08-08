@@ -3,12 +3,12 @@ PLUS BESOIN DE CE FICHIER !!!!
 <?php
 require_once '../Model/Tag.php';
 
-echo '<pre>';
-var_dump($_POST['tag_id']);
-echo '</pre>';
+// echo '<pre>';
+// var_dump($_POST['tag_id']);
+// echo '</pre>';
+// var_dump($hike_id);
 
 $hike_id = $_GET['hikeID'];
-var_dump($hike_id);
 
 $tag_id = $_POST['tag_id'];
 

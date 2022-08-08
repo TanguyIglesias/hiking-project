@@ -18,13 +18,13 @@ foreach ($tagInfo as $key => $value)
 //require_once '../view/head.php';
 require_once '../view/header.php';
 
-echo '<pre>';
-var_dump($tagArr);
-echo '</pre>';
+// echo '<pre>';
+// var_dump($tagArr);
+// echo '</pre>';
 
-echo '<pre>';
-var_dump($hike_id);
-echo '</pre>';
+// echo '<pre>';
+// var_dump($hike_id);
+// echo '</pre>';
     
 ?>
 
