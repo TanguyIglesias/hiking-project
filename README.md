@@ -15,6 +15,8 @@ This project consist of an web site about hikes created by users.
 - MVC architecture.
 - Agile methodology.
 
+## Use site :
+
 On the site, we have created an administrator area that can manage the entire site. It is possible to create a user space, to add hikes, to modify them if you are the creator.
 
 ## Use Techno :
@@ -32,7 +34,6 @@ Henri Hals, Tanguy Iglesias and Antoine Nowak
 ## Link : 
 
 - Link Github : https://github.com/TanguyIglesias/hiking-project
-- 
 
 
 
