@@ -1,6 +1,6 @@
 <body>
     <main class="notfound-main">
-        <p>400 Not Found</p>
+        <p>404 Not Found</p>
         <p>Time to go Hiking</p>
     </main>
 </body>
@@ -14,7 +14,7 @@
         color:white;
         
         font-weight: 900;
-        font-size: 200px;
+        font-size: 150px;
     }
     
 </style>

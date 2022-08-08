@@ -53,7 +53,7 @@ class SendHike extends Database
 
                 }else
                 {
-                    if(!preg_match("/^[a-zA-Z-àâáçéèèêëìîíïôòóùûüÂÊÎÔúÛÄËÏÖÜÀÆæÇÉÈŒœÙñý' ]*$/", $hike_name))
+                    if(!preg_match("/^([A-Za-z \-]+(?:\'|&#0*39;)*)*[A-Za-z \-]+$/", $hike_name))
                     {
                         
                         header("Location:/createhike");
