@@ -54,7 +54,7 @@ require_once '../view/head.php';
                         <span style="color:red"><?= (isset($_SESSION['durationErr'])) ? $_SESSION['durationErr'] : "" ?></span>
                         <br>
                         <input type="text" name="content" placeholder="Description" value="<?=$hikeContent?>">
-                        <span style="color:red"><?= (isset($_SESSION['contentErr'])) ? $_SESSION['contentErr'] : "" ?></span>
+                        <!-- <span style="color:red"><?= (isset($_SESSION['contentErr'])) ? $_SESSION['contentErr'] : "" ?></span> -->
                         <br>
                         <input type="text" name="image_path" placeholder="url image" value="<?=$hikeImage?>">
                         <span style="color:red"><?= (isset($_SESSION['urlErr'])) ? $_SESSION['urlErr'] : "" ?></span>
@@ -108,7 +108,7 @@ require_once '../view/head.php';
         unset($_SESSION['distanceErr']);
         unset($_SESSION['elevationErr']);
         unset($_SESSION['durationErr']);
-        unset($_SESSION['contentErr']);
+        // unset($_SESSION['contentErr']);
         unset($_SESSION['nameDupes']);
         unset($_SESSION['tagErr']);
         ?>
