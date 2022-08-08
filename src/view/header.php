@@ -7,7 +7,7 @@
 <header>
     <div>
         <img src="" alt="">
-        <a href="/" style="text-decoration: none; color: black"><h1>Hiking Adventure Time</h1></a>
+        <a href="/" style="text-decoration: none; color: white; font-family:Tahoma"><h1>Hiking Adventure Time</h1></a>
     </div>
     <nav>
         <?php
